@@ -10,7 +10,7 @@ before_script:
 before_install:
 - nvm install $NODE_VERSION
 script:
-- (cd backend && ./build.sh)
+- (cf target && cd backend && ./build.sh)
   && (cd frontend && ./build.sh)
   && (cd acceptance-tests && ./build.sh && ./upload-serenity-reports.sh)
 addons:
