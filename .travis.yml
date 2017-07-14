@@ -17,6 +17,8 @@ script:
   && (cd services/flightinformation && ./build.sh)
   && (cd services/educama-supplier-simulator-backend && ./build.sh)
   && (cd services/educama-supplier-simulator-frontend && ./build.sh)
+before_deploy:
+  - sh -e /etc/init.d/xvfb stop
 addons:
   #Browser is used by the acceptance tests
   firefox: '42.0'
