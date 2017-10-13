@@ -6,7 +6,7 @@ START_TIME=$SECONDS
 echo -n "NPM Version: " && npm --version
 echo -n "Node Version: " && node --version
 
-npm install
+npm install --batch-mode
 
 echo "Directory content after build:"
 ls -al
