@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.cors.CorsConfiguration;
 
 import java.util.Collections;
@@ -13,6 +14,7 @@ import java.util.List;
  * Configuration properties for CORS related settings.
  */
 @ConfigurationProperties(prefix = "cors")
+@Validated
 public class CorsProperties {
 
     private CorsConfiguration corsProp = new CorsConfiguration().applyPermitDefaultValues();
