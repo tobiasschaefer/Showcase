@@ -17,27 +17,26 @@ margin: 10px 0 0 10px;
 width:100%;
 }
 
-
-
-
-
-
-
-
 </style>
 <body>
 <div class="main">
     <div>
-        This is a little snippet for uploading csv file to the flightinfo service.
+        <p>This is a simple page for uploading csv file to the flightinfo service.</p>
+        <p>Example data is available at:
+            <ul>
+                <li>Local directory src/main/java/resources/data/</li>
+                <li><a href="https://openflights.org/data.html">https://openflights.org/data.html</a></li>
+            </ul>
+        </p>
     </div>
 
 
     <div class="chart">
         <h2>Upload Airports Data</h2>
-        The csv is posted as multipart data form to:<i> /airports/import/csv</i>
+        The csv is posted as multipart data form to <i> /airports/import/csv</i>. An empty page will be displayed in case of a successful import.
         <form method="POST" enctype="multipart/form-data" action="airports/import/csv">
             <table>
-                <tr>Please select the csv file</tr>
+                <tr><td>Please select the csv file.</td></tr>
                 <tr>
                     <td><input type="file" name="file"/></td>
                 </tr>
@@ -52,10 +51,10 @@ width:100%;
     <div class="chart">
         <h2>Upload Airlines Data</h2>
 
-        The csv is posted as multipart data form to:<i> /airlines/import/csv</i>
+        The csv is posted as multipart data form to <i> /airlines/import/csv</i>. An empty page will be displayed in case of a successful import.
         <form method="POST" enctype="multipart/form-data" action="airlines/import/csv">
             <table>
-                <tr>Please select the csv file</tr>
+                <tr><td>Please select the csv file.</td></tr>
                 <tr>
                     <td><input type="file" name="file"/></td>
                 </tr>
@@ -69,10 +68,10 @@ width:100%;
 
     <div class="chart">
         <h2>Upload flight flightConnections Data</h2>
-        The csv is posted as multipart data form to:<i> /flightConnections/import/csv</i>
+        The csv is posted as multipart data form to <i> /flightConnections/import/csv</i>. An empty page will be displayed in case of a successful import.
         <form method="POST" enctype="multipart/form-data" action="flightConnections/import/csv">
             <table>
-                <tr>Please select the csv file</tr>
+                <tr><td>Please select the csv file.</td></tr>
                 <tr>
                     <td><input type="file" name="file"/></td>
                 </tr>
