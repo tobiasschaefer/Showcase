@@ -255,7 +255,15 @@ public class RestApiDocumentation {
                                 fieldWithPath("shipmentServices.flight").description("Is true if the shipment includes a flight"),
                                 fieldWithPath("shipmentServices.importInsurance").description("Is true if the shipment has import insurance"),
                                 fieldWithPath("shipmentServices.importCustomsClearance").description("Is true if the shipment has to pay customs for import"),
-                                fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment")),
+                                fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment"),
+                                fieldWithPath("flight").description("Includes information about the flight"),
+                                fieldWithPath("flight.flightNumber").description("Includes Flight information for the Shipment"),
+                                fieldWithPath("flight.airline").description("The operating airline"),
+                                fieldWithPath("flight.departureAirport").description("The departure airport"),
+                                fieldWithPath("flight.destinationAirport").description("The destination airport"),
+                                fieldWithPath("flight.departureTime").description("The time of departure"),
+                                fieldWithPath("flight.destinationTime").description("The time of destination"),
+                                fieldWithPath("flight.price").description("The price of the flight")),
                         responseFields(fieldDescriptorShipmentResource)));
 }
 
@@ -478,6 +486,16 @@ public class RestApiDocumentation {
         services.put("importCustomsClearance", false);
         services.put("onCarriage", true);
         shipment.put("shipmentServices", services);
+
+        Map<String, Object> flight = new LinkedHashMap<>();
+        flight.put("flightNumber", "1234");
+        flight.put("airline", "Air Berlin");
+        flight.put("departureAirport", "Stuttgart");
+        flight.put("destinationAirport", "Berlin");
+        flight.put("departureTime", "1999-11-27 15:49:37,459");
+        flight.put("destinationTime", "1999-11-27 15:49:37,459");  // 2014-04-28T10:20:08.489Z
+        flight.put("price", "100.0");
+        shipment.put("flight", flight);
 
         return shipment;
     }

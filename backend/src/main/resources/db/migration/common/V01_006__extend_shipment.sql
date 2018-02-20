@@ -11,6 +11,7 @@ alter table shipment add column total_weight double precision not null;
 alter table shipment add column export_customs_clearance bit not null;
 alter table shipment add column export_insurance bit not null;
 alter table shipment add column flight bit not null;
+
 alter table shipment add column import_customs_clearance bit not null;
 alter table shipment add column import_insurance bit not null;
 alter table shipment add column on_carriage bit not null;
