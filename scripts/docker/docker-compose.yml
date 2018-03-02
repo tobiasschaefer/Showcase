@@ -1,0 +1,33 @@
+---
+version: '2'
+services:
+
+  mongo-db:
+    container_name: educama-mongodb
+    image: mongo:3.4
+    hostname: mongodb
+    ports:
+      - "27017:27017"
+
+  mysql-db:
+    container_name: educama-mysql
+    image: mysql:5.7
+    hostname: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: educama
+      MYSQL_DATABASE: educama
+      MYSQL_USER: educama
+      MYSQL_PASSWORD: educama
+
+  rabbitmq:
+    container_name: educama-rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: secret
+
