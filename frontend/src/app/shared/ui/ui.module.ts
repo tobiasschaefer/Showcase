@@ -13,7 +13,8 @@ import {
     InputTextareaModule,
     MenubarModule,
     PanelModule,
-    TabViewModule
+    TabViewModule,
+    CalendarModule
 } from "primeng/primeng";
 
 @NgModule({
@@ -31,7 +32,8 @@ import {
         InputTextareaModule,
         MenubarModule,
         PanelModule,
-        TabViewModule
+        TabViewModule,
+        CalendarModule
     ]
 })
 export class UIModule {

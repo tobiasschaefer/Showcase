@@ -11,6 +11,10 @@ import {
   RequestTasksAction, RequestTasksForShipmentAction
 } from "../../shipment-common/store/tasks/task-list-page.actions";
 import {TaskResource} from "../../shipment-common/api/resources/task.resource";
+import {
+  LoadSingleShipmentAction,
+  RequestSingleShipment
+} from "../../shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
 
 @Component({
   selector: "educama-task-list-page",
@@ -65,8 +69,9 @@ export class TaskListPageComponent implements OnInit, OnDestroy {
       case "Complete shipment order":
         this._router.navigate(["caseui/" + task.trackingId + "/completeShipment"]);
         break;
-      case "Create invoice":
-        this._router.navigate(["caseui/" + task.trackingId]);
+      case "Organize Flight":
+        this._store.dispatch(new RequestSingleShipment(task.trackingId));
+        this._router.navigate(["caseui/" + task.trackingId + "/organizeFlight"]);
         break;
       default:
         break;

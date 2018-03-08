@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from "@angular/core";
+import {Component, Input, Output} from "@angular/core";
 import {CompletedTaskListRowModel} from "../container/completed-task-list-page.model";
 import {TaskResource} from "../../shipment-common/api/resources/task.resource";
 

@@ -1,18 +1,14 @@
-import {Component, DoCheck, OnChanges, OnDestroy, OnInit} from "@angular/core";
-import {ShipmentCaptureSlice} from "../../../shipment-common/store/shipments/shipment-capture-page.slice";
+import {Component,  OnChanges, OnDestroy, OnInit} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
 import {ActivatedRoute} from "@angular/router";
-import {ShipmentService} from "../../../shipment-common/api/shipment.service";
 import {State} from "../../../../app.reducers";
 import {Store} from "@ngrx/store";
 import {CaseUIShipmentDetailModel} from "./caseUI-shipmentDetail-page.model";
-import {
-  ResetShipmentCaptureSliceAction
-} from "../../../shipment-common/store/shipments/shipment-capture-page.actions";
-import {
-  RequestSingleShipment
-} from "../../../shipment-common/store/shipments/shipment-list-page.actions";
+import {ShipmentCaptureSlice} from "../../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.slice";
+import {RequestSingleShipment} from "../../../shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
+import {ResetShipmentCaptureSliceAction
+} from "../../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.actions";
 
 
 @Component({

@@ -3,6 +3,7 @@ import {Actions, Effect} from "@ngrx/effects";
 import {TaskService} from "../api/task.service";
 import * as actions from "../store/enbaled-tasks/enabled-task-list-page.actions";
 import {
+  RequestEnabledTasksForShipmentAction,
   RequestEnabledTasksSuccessfulAction, StartEnabledTasksSuccessfulAction
 } from "../store/enbaled-tasks/enabled-task-list-page.actions";
 import {RequestTasksForShipmentAction} from "../store/tasks/task-list-page.actions";
@@ -38,10 +39,10 @@ export class EnabledTaskListEffect {
     )
     .map((payload) => new StartEnabledTasksSuccessfulAction(payload));
 
-
   @Effect()
-  getNewActioveTasks = this._actions
+  loadActiveTasks = this._actions
     .ofType(actions.START_ENABLED_TASKS_SUCCESSFUL)
-    .map(() =>
+    .map((action: actions.StartEnabledTasksSuccessfulAction) =>
       new RequestTasksForShipmentAction(this.lastId));
+
 }

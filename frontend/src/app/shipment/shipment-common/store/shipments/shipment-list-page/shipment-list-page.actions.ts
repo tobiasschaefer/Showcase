@@ -1,6 +1,6 @@
 import {Action} from "@ngrx/store";
-import {ShipmentResource} from "../../api/resources/shipment.resource";
-import {ShipmentListResource} from "../../api/resources/shipment-list.resource";
+import {ShipmentResource} from "../../../api/resources/shipment.resource";
+import {ShipmentListResource} from "../../../api/resources/shipment-list.resource";
 
 // Initialize Actions
 export const INITIALIZE_SHIPMENT_LIST = "INITIALIZE_SHIPMENT_LIST";

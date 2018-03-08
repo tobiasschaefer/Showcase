@@ -1,6 +1,7 @@
 import {Cargo} from "../datastructures/cargo.datastructure";
 import {ShipmentServices} from "../datastructures/services.datastructure";
-import {Flight, Party} from "../datastructures/party.datastructure";
+import {Party} from "../datastructures/party.datastructure";
+import {OrganizeFlightResource} from "./organize-flight.resource";
 export class ShipmentResource {
     public trackingId: string;
     public uuidSender: string;
@@ -10,5 +11,5 @@ export class ShipmentResource {
     public customerTypeEnum: string;
     public shipmentCargo: Cargo;
     public shipmentServices: ShipmentServices;
-    public shipmentFlight: Flight;
+    public shipmentFlight: OrganizeFlightResource;
 }

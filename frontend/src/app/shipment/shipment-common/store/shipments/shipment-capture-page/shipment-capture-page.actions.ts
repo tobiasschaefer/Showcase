@@ -1,6 +1,5 @@
 import {Action} from "@ngrx/store";
-import {ShipmentResource} from "../../api/resources/shipment.resource";
-
+import {ShipmentResource} from "../../../api/resources/shipment.resource";
 export const LOAD_SHIPMENT_SUCCESSFULL = "LOAD_SHIPMENT_SUCCESSFULL";
 export const RESET_SHIPMENT_CAPTURE_SLICE = "type = RESET_SHIPMENT_CAPTURE_SLICE";
 export const UPDATE_SHIPMENT = "UPDATE_SHIPMENT";

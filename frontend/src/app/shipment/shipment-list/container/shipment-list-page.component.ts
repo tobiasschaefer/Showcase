@@ -5,8 +5,9 @@ import {Observable, Subscription} from "rxjs";
 import {ShipmentListModel, ShipmentListRowModel} from "./shipment-list-page.model";
 import {State} from "../../../app.reducers";
 import {Address} from "../../../customer/customer-common/api/datastructures/address.datastructure";
-import {ShipmentListSlice} from "../../shipment-common/store/shipments/shipment-list-page.slice";
-import {InitializeShipmentListAction, RequestShipmentsAction} from "../../shipment-common/store/shipments/shipment-list-page.actions";
+import {ShipmentListSlice} from "../../shipment-common/store/shipments/shipment-list-page/shipment-list-page.slice";
+import {InitializeShipmentListAction, RequestShipmentsAction
+} from "../../shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
 import {ShipmentResource} from "../../shipment-common/api/resources/shipment.resource";
 
 @Component({
