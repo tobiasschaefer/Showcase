@@ -1,0 +1,100 @@
+<p-panel header="{{'ORGANIZE-FLIGHT'|translate}}">
+  <div class="ui-g">
+
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-2">
+        <label>{{'FLIGHT-NUMBER' | translate}}</label>
+      </div>
+      <div class="ui-g-12 ui-md-10 ">
+        <input type="text" pInputText>
+      </div>
+      <div class="ui-g-12 ui-md-2">
+        <label>{{'FLIGHT-AIRLINE' | translate}}</label>
+      </div>
+      <div class="ui-g-12 ui-md-10">
+        <input type="text" pInputText>
+      </div>
+      <div class="ui-g-12 ui-md-2">
+        <label>{{'FLIGHT-PRICE' | translate}}</label>
+      </div>
+      <div class="ui-g-12 ui-md-10">
+        <input type="text" pInputText>
+      </div>
+
+<!-----Center Bottom------->
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-5">
+          <div class="ui-g-12">
+            <label class="start">{{'FLIGHT-DEPARTURE' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>{{'FLIGHT-NUMBER' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input type="text" pInputText>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>Kürzel:</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input type="text" pInputText>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>{{'DATE' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input type="text" pInputText>
+            <span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>{{'TIME' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input type="text" pInputText>
+            <span class="ui-inputgroup-addon"><i class="fa fa-clock-o"></i></span>
+          </div>
+        </div>
+        <div class="plane-class ui-g-12 ui-md-1">
+          <span><i class="fa fa-plane fa-4x"></i></span>
+        </div>
+
+        <div class=" right-side ui-g-12 ui-md-5">
+          <div class="ui-g-12">
+            <label class="finish" >{{'FLIGHT-DESTINATION' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>{{'FLIGHT-NUMBER' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-9 ">
+            <input type="text" pInputText>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>Kürzel:</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input type="text" pInputText>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>{{'DATE' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input type="text" pInputText>
+            <span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>{{'TIME' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input type="text" pInputText>
+            <span class="ui-inputgroup-addon"><i class="fa fa-clock-o"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------Footer-------->
+    <div class="footer-class ui-g-12">
+      <button style="float:right;" class="save-button" pButton type="button" label="Abschließen" icon="fa-check" class="ui-button-success" iconPos="right"></button>
+      <button style="float:right;" class="abord-button" pButton type="button" label="Abbrechen" icon="fa-times" class="ui-button-danger" iconPos="right"></button>
+    </div>
+  </div>
+</p-panel>

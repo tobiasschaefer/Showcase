@@ -6,6 +6,7 @@ import {ShipmentCommonModule} from "./shipment-common/shipment-common.module";
 import {ShipmentRoutingModule} from "./shipment-routing/shipment-routing.module";
 import {EnabledTaskListModule} from "./enabled-task-list/enabled-task-list.module";
 import {CompletedTaskListModule} from "./completed-task-list/completed-task-list.module";
+import {OrganizeFlightFormModule} from "../flights/organize-flight-form/organize-flight-form.module";
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import {CompletedTaskListModule} from "./completed-task-list/completed-task-list
       ShipmentRoutingModule,
       TaskListModule,
       EnabledTaskListModule,
-      CompletedTaskListModule
+      CompletedTaskListModule,
+      OrganizeFlightFormModule
     ]
 })
 export class ShipmentModule {

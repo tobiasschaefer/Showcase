@@ -24,7 +24,13 @@
   "CUSTOMER-CAPTURE-COMPONENT_TITLE-CREATE": "Neuen Kunden anlegen",
   "CUSTOMER-CAPTURE-COMPONENT_TITLE-UPDATE": "Kundendaten ändern",
   "CUSTOMER-LIST-COMPONENT_TITLE": "Liste der Kunden",
+  "DATE": "Datum",
   "ERROR-COMPONENT_TITLE": "Achtung",
+  "FLIGHT-AIRLINE": "Fluggesellschaft",
+  "FLIGHT-DEPARTURE": "Start",
+  "FLIGHT-DESTINATION": "Ziel",
+  "FLIGHT-NUMBER": "Flugnummer",
+  "Flight-PRICE": "Flugpreis",
   "GENERIC_CANCEL": "Abbrechen",
   "GENERIC_CREATE": "Anlegen",
   "GENERIC_ID": "ID",
@@ -78,6 +84,7 @@
   "TASK-RESOURCE_DESCRIPTION": "Beschreibung",
   "TASK-RESOURCE_ASSIGNEE": "Zugewiesen an",
   "TASK-LIST-PAGE-COMPONENT-TITLE": "Alle Aufgaben",
+  "TIME": "Uhrzeit",
   "ACTIVE-TASK-LIST-TITLE": "Aktive Aufgaben",
   "ENABLED-TASK-LIST-TITLE": "Aktivierbare Aufgaben"
 }
