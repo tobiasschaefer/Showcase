@@ -106,4 +106,13 @@ public class ShipmentTaskBoundaryServiceImpl implements ShipmentTaskBoundaryServ
         caseExecutions.stream().filter(caseExecution -> caseExecution.getActivityName().equals(name)).
                 findFirst().ifPresent(caseExecution -> caseService.manuallyStartCaseExecution(caseExecution.getId()));
     }
+
+    @Override
+    public void completeTask(String trackingID, String name) {
+        Collection<CaseExecution> caseExecutions =
+                caseService.createCaseExecutionQuery().caseInstanceBusinessKey(trackingID).list();
+
+        caseExecutions.stream().filter(caseExecution -> caseExecution.getActivityName().equals(name)).
+                findFirst().ifPresent(caseExecution -> caseService.completeCaseExecution(caseExecution.getId()));
+    }
 }

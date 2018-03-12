@@ -41,4 +41,12 @@ public interface ShipmentBoundaryService {
      */
     ShipmentResource updateShipment(String trackingId, Shipment saveShipmentResource);
 
+    /**
+     * Retrieves one shipment and adds shipmentFlight Information.
+     *
+     * @param trackingId to get required shipment
+     * @return returns the  updated shipment as a resource
+     */
+    ShipmentResource addFlightToShipment(String trackingId, Shipment saveShipmentResource);
+
 }

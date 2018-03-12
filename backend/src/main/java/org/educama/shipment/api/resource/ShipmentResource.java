@@ -2,6 +2,7 @@ package org.educama.shipment.api.resource;
 
 import org.educama.enums.ClientType;
 import org.educama.shipment.api.datastructure.CargoDS;
+import org.educama.shipment.api.datastructure.FlightDS;
 import org.educama.shipment.api.datastructure.PartyDS;
 import org.educama.shipment.api.datastructure.ServicesDS;
 import org.educama.shipment.model.Shipment;
@@ -17,6 +18,7 @@ public class ShipmentResource {
     public CargoDS shipmentCargo;
     public ServicesDS shipmentServices;
     public ClientType customerTypeEnum;
+    public FlightDS shipmentFlight;
 
     /**
      * Create a API-Model (Resource) instance from the internal data model.
@@ -31,6 +33,7 @@ public class ShipmentResource {
         this.shipmentCargo = new CargoDS(shipmentModel.shipmentCargo);
         this.shipmentServices = new ServicesDS(shipmentModel.shipmentServices);
         this.customerTypeEnum = shipmentModel.customerTypeEnum;
+        this.shipmentFlight = new FlightDS(shipmentModel.shipmentFlight);
 
         return this;
     }

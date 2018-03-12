@@ -41,4 +41,10 @@ public interface ShipmentTaskBoundaryService {
      * manually start a enabled task in camunda.
      */
      void manuallyStartEnabledTask(String trackingId, String name);
+
+    /**
+     * complete a task in camunda.
+     */
+    void completeTask(String trackingId, String name);
+
 }

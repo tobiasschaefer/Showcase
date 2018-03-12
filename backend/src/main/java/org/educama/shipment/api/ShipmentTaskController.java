@@ -79,5 +79,16 @@ public class ShipmentTaskController {
         return enabledTaskListResource;
     }
 
+    /**
+     * API call to complete an active task by trackingId and name.
+     */
+    @RequestMapping(value = "/active/{trackingId}/{name}", method = RequestMethod.POST)
+    public ShipmentTaskListResource completeTask(@PathVariable("trackingId") String trackingId, @PathVariable("name") String name) {
+        shipmentTaskBoundaryService.completeTask(trackingId, name);
+        List<ShipmentTaskDS> completeTask = shipmentTaskBoundaryService.findAllActiveForShipment(trackingId);
+        ShipmentTaskListResource shipmentTaskListResource = new ShipmentTaskListResource().fromTaskCollection(completeTask);
+        return shipmentTaskListResource;
+    }
+
 }
 

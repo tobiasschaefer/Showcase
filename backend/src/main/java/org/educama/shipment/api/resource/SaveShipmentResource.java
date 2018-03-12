@@ -33,7 +33,7 @@ public class SaveShipmentResource {
         toConvert.shipmentCargo = shipmentCargo.toCargo();
         toConvert.shipmentServices = shipmentServices.toServices();
         toConvert.customerTypeEnum = customerTypeEnum;
-        toConvert.flight = shipmentFlight.toFlight();
+        toConvert.shipmentFlight = shipmentFlight.toFlight();
         return toConvert;
     }
 }

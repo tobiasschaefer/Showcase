@@ -24,8 +24,8 @@ public class FlightDS {
         this.airline = flight.airline;
         this.departureAirport = flight.departureAirport;
         this.destinationAirport = flight.destinationAirport;
-        this.departureTime = flight.departureTime;
-        this.destinationTime = flight.destinationTime;
+        this.departureTime = flight.departureTime.toString();
+        this.destinationTime = flight.destinationTime.toString();
         this.price = flight.price;
     }
 

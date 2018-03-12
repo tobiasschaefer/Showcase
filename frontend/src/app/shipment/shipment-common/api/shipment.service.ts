@@ -25,6 +25,7 @@ export class ShipmentService {
      * @return An observable of a shipment
      */
     public createShipment(shipment: ShipmentResource): Observable<ShipmentResource> {
+      const x =  JSON.stringify(shipment);
         return this._restClientService.post(this.SHIPMENT_RESOURCE_PATH, JSON.stringify(shipment));
     }
 

@@ -1,6 +1,7 @@
 package org.educama.shipment.model;
 
 import javax.persistence.Embeddable;
+import java.time.Instant;
 
 /**
  * This represents the address entity used for database persistence.
@@ -12,8 +13,8 @@ public class Flight {
     public String airline;
     public String departureAirport;
     public String destinationAirport;
-    public String departureTime;
-    public String destinationTime;
+    public Instant departureTime;
+    public Instant destinationTime;
     public double price;
 
 
@@ -29,8 +30,8 @@ public class Flight {
         this.airline = airline;
         this.departureAirport = departureAirport;
         this.destinationAirport = destinationAirport;
-        this.departureTime = departureTime;
-        this.destinationTime = destinationTime;
+        this.departureTime = Instant.parse(departureTime);
+        this.destinationTime = Instant.parse(destinationTime);
         this.price = price;
     }
 }

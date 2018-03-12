@@ -133,7 +133,7 @@ public class RestApiDocumentation {
                 fieldWithPath("shipmentServices.preCarriage").description("Is true if additional actions have to take place before the shipment"),
                 fieldWithPath("shipmentServices.exportInsurance").description("Is true if the shipment has export insurance"),
                 fieldWithPath("shipmentServices.exportCustomsClearance").description("Is true if the shipment has to pay customs for export"),
-                fieldWithPath("shipmentServices.flight").description("Is true if the shipment includes a flight"),
+                fieldWithPath("shipmentServices.shipmentFlight").description("Is true if the shipment includes a shipmentFlight"),
                 fieldWithPath("shipmentServices.importInsurance").description("Is true if the shipment has import insurance"),
                 fieldWithPath("shipmentServices.importCustomsClearance").description("Is true if the shipment has to pay customs for import"),
                 fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment")
@@ -252,18 +252,18 @@ public class RestApiDocumentation {
                                 fieldWithPath("shipmentServices.preCarriage").description("Is true if additional actions have to take place before the shipment"),
                                 fieldWithPath("shipmentServices.exportInsurance").description("Is true if the shipment has export insurance"),
                                 fieldWithPath("shipmentServices.exportCustomsClearance").description("Is true if the shipment has to pay customs for export"),
-                                fieldWithPath("shipmentServices.flight").description("Is true if the shipment includes a flight"),
+                                fieldWithPath("shipmentServices.shipmentFlight").description("Is true if the shipment includes a shipmentFlight"),
                                 fieldWithPath("shipmentServices.importInsurance").description("Is true if the shipment has import insurance"),
                                 fieldWithPath("shipmentServices.importCustomsClearance").description("Is true if the shipment has to pay customs for import"),
                                 fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment"),
-                                fieldWithPath("flight").description("Includes information about the flight"),
-                                fieldWithPath("flight.flightNumber").description("Includes Flight information for the Shipment"),
-                                fieldWithPath("flight.airline").description("The operating airline"),
-                                fieldWithPath("flight.departureAirport").description("The departure airport"),
-                                fieldWithPath("flight.destinationAirport").description("The destination airport"),
-                                fieldWithPath("flight.departureTime").description("The time of departure"),
-                                fieldWithPath("flight.destinationTime").description("The time of destination"),
-                                fieldWithPath("flight.price").description("The price of the flight")),
+                                fieldWithPath("shipmentFlight").description("Includes information about the shipmentFlight"),
+                                fieldWithPath("shipmentFlight.flightNumber").description("Includes Flight information for the Shipment"),
+                                fieldWithPath("shipmentFlight.airline").description("The operating airline"),
+                                fieldWithPath("shipmentFlight.departureAirport").description("The departure airport"),
+                                fieldWithPath("shipmentFlight.destinationAirport").description("The destination airport"),
+                                fieldWithPath("shipmentFlight.departureTime").description("The time of departure"),
+                                fieldWithPath("shipmentFlight.destinationTime").description("The time of destination"),
+                                fieldWithPath("shipmentFlight.price").description("The price of the shipmentFlight")),
                         responseFields(fieldDescriptorShipmentResource)));
 }
 
@@ -481,7 +481,7 @@ public class RestApiDocumentation {
         services.put("preCarriage", true);
         services.put("exportInsurance", false);
         services.put("exportCustomsClearance", true);
-        services.put("flight", true);
+        services.put("shipmentFlight", true);
         services.put("importInsurance", true);
         services.put("importCustomsClearance", false);
         services.put("onCarriage", true);
@@ -495,7 +495,7 @@ public class RestApiDocumentation {
         flight.put("departureTime", "1999-11-27 15:49:37,459");
         flight.put("destinationTime", "1999-11-27 15:49:37,459");  // 2014-04-28T10:20:08.489Z
         flight.put("price", "100.0");
-        shipment.put("flight", flight);
+        shipment.put("shipmentFlight", flight);
 
         return shipment;
     }
@@ -521,7 +521,7 @@ public class RestApiDocumentation {
         services.put("preCarriage", true);
         services.put("exportInsurance", false);
         services.put("exportCustomsClearance", true);
-        services.put("flight", true);
+        services.put("shipmentFlight", true);
         services.put("importInsurance", true);
         services.put("importCustomsClearance", false);
         services.put("onCarriage", true);
