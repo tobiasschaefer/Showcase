@@ -5,6 +5,7 @@ import org.educama.common.exceptions.ResourceNotFoundException;
 import org.educama.shipment.api.resource.ShipmentResource;
 import org.educama.shipment.boundary.ShipmentBoundaryService;
 import org.educama.shipment.control.ShipmentCaseControlService;
+import org.educama.shipment.model.Flight;
 import org.educama.shipment.model.Shipment;
 import org.educama.shipment.process.ShipmentCaseEvaluator;
 import org.educama.shipment.process.tasks.CompleteShipmentOrderTask;
@@ -36,11 +37,13 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
 
     @Autowired
     public ShipmentBoundaryServiceImpl(CompleteShipmentOrderTask completeShipmentOrderTask,
+                                       OrganizeFlightTask organizeFlightTask,
                                        ShipmentRepository shipmentRepository,
                                        ShipmentCaseControlService shipmentCaseControlService,
                                        ShipmentCaseEvaluator shipmentCaseEvaluator,
                                        ProcessEngine processEngine) {
         this.completeShipmentOrderTask = completeShipmentOrderTask;
+        this.organizeFlightTask = organizeFlightTask;
         this.shipmentRepository = shipmentRepository;
         this.shipmentCaseControlService = shipmentCaseControlService;
         this.shipmentCaseEvaluator = shipmentCaseEvaluator;
@@ -90,12 +93,12 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
     }
 
     @Override
-    public ShipmentResource addFlightToShipment(String trackingId, Shipment saveShipmentResource) {
+    public ShipmentResource addFlightToShipment(String trackingId, Flight saveFlightResource) {
         Shipment shipment = shipmentRepository.findOneBytrackingId(trackingId);
         if (shipment == null) {
             throw new ResourceNotFoundException("Shipment not found");
         } else {
-            shipment.shipmentFlight = saveShipmentResource.shipmentFlight;
+            shipment.shipmentFlight = saveFlightResource;
             shipment = shipmentRepository.saveAndFlush(shipment);
             organizeFlightTask.complete(trackingId);
             shipmentCaseEvaluator.reevaluateCase(trackingId);

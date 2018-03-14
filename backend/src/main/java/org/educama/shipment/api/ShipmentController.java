@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Instant;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -59,7 +58,6 @@ public class ShipmentController {
         Shipment createdShipment = shipmentBoundaryService.createShipment(convertedShipment);
         ShipmentResource responseShipmentResource = new ShipmentResource().fromShipment(createdShipment);
 
-        Instant x = Instant.parse("2016-12-31T00:00:00Z");
         return new ResponseEntity<>(responseShipmentResource, HttpStatus.CREATED);
     }
 

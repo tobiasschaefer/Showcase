@@ -27,7 +27,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -52,6 +51,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class RestApiDocumentation {
 
     public static final int PORT = 8081;
+    private static final double FLIGHTPRICE = 100.12;
 
     @Rule
     public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("target/generated-snippets");
@@ -133,10 +133,18 @@ public class RestApiDocumentation {
                 fieldWithPath("shipmentServices.preCarriage").description("Is true if additional actions have to take place before the shipment"),
                 fieldWithPath("shipmentServices.exportInsurance").description("Is true if the shipment has export insurance"),
                 fieldWithPath("shipmentServices.exportCustomsClearance").description("Is true if the shipment has to pay customs for export"),
-                fieldWithPath("shipmentServices.shipmentFlight").description("Is true if the shipment includes a shipmentFlight"),
+                fieldWithPath("shipmentServices.flight").description("Is true if the shipment includes a flight"),
                 fieldWithPath("shipmentServices.importInsurance").description("Is true if the shipment has import insurance"),
                 fieldWithPath("shipmentServices.importCustomsClearance").description("Is true if the shipment has to pay customs for import"),
-                fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment")
+                fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment"),
+                fieldWithPath("shipmentFlight").description("Includes information about the shipmentFlight"),
+                fieldWithPath("shipmentFlight.flightNumber").description("The number of the flight"),
+                fieldWithPath("shipmentFlight.airline").description("The airline of the flight"),
+                fieldWithPath("shipmentFlight.departureAirport").description("The departure airport of the flight"),
+                fieldWithPath("shipmentFlight.destinationAirport").description("The destination airport of the flight"),
+                fieldWithPath("shipmentFlight.departureTime").description("The time when the flight starts"),
+                fieldWithPath("shipmentFlight.destinationTime").description("The time when the flight lands"),
+                fieldWithPath("shipmentFlight.price").description("The price of the flight")
         };
 
         // Active Task Resource
@@ -237,7 +245,7 @@ public class RestApiDocumentation {
     @Test
     public void createShipmentTest() throws Exception {
         createShipment()
-        .andExpect(status().isCreated()).andDo(
+                .andExpect(status().isCreated()).andDo(
                 this.documentationHandler.document(
                         requestFields(fieldWithPath("uuidSender").description("the UUID of the sender"),
                                 fieldWithPath("uuidReceiver").description("the UUID of the receiver"),
@@ -252,20 +260,69 @@ public class RestApiDocumentation {
                                 fieldWithPath("shipmentServices.preCarriage").description("Is true if additional actions have to take place before the shipment"),
                                 fieldWithPath("shipmentServices.exportInsurance").description("Is true if the shipment has export insurance"),
                                 fieldWithPath("shipmentServices.exportCustomsClearance").description("Is true if the shipment has to pay customs for export"),
-                                fieldWithPath("shipmentServices.shipmentFlight").description("Is true if the shipment includes a shipmentFlight"),
+                                fieldWithPath("shipmentServices.flight").description("Is true if the shipment includes a flight"),
                                 fieldWithPath("shipmentServices.importInsurance").description("Is true if the shipment has import insurance"),
                                 fieldWithPath("shipmentServices.importCustomsClearance").description("Is true if the shipment has to pay customs for import"),
                                 fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment"),
                                 fieldWithPath("shipmentFlight").description("Includes information about the shipmentFlight"),
-                                fieldWithPath("shipmentFlight.flightNumber").description("Includes Flight information for the Shipment"),
-                                fieldWithPath("shipmentFlight.airline").description("The operating airline"),
-                                fieldWithPath("shipmentFlight.departureAirport").description("The departure airport"),
-                                fieldWithPath("shipmentFlight.destinationAirport").description("The destination airport"),
-                                fieldWithPath("shipmentFlight.departureTime").description("The time of departure"),
-                                fieldWithPath("shipmentFlight.destinationTime").description("The time of destination"),
-                                fieldWithPath("shipmentFlight.price").description("The price of the shipmentFlight")),
+                                fieldWithPath("shipmentFlight.flightNumber").description("The number of the flight"),
+                                fieldWithPath("shipmentFlight.airline").description("The airline of the flight"),
+                                fieldWithPath("shipmentFlight.departureAirport").description("The departure airport of the flight"),
+                                fieldWithPath("shipmentFlight.destinationAirport").description("The destination airport of the flight"),
+                                fieldWithPath("shipmentFlight.departureTime").description("The time when the flight starts"),
+                                fieldWithPath("shipmentFlight.destinationTime").description("The time when the flight lands"),
+                                fieldWithPath("shipmentFlight.price").description("The price of the flight")),
                         responseFields(fieldDescriptorShipmentResource)));
-}
+    }
+
+    public void updateShipmentTest() throws Exception {
+        updateShipment()
+                .andExpect(status().isCreated()).andDo(
+                this.documentationHandler.document(
+                        requestFields(fieldWithPath("uuidSender").description("the UUID of the sender"),
+                                fieldWithPath("uuidReceiver").description("the UUID of the receiver"),
+                                fieldWithPath("customerTypeEnum").description("Tells wether the sender or receiver is the customer of the shipment"),
+                                fieldWithPath("shipmentCargo").description("Includes cargo information about the shipment"),
+                                fieldWithPath("shipmentCargo.numberPackages").description("The number of packages of the cargo"),
+                                fieldWithPath("shipmentCargo.totalWeight").description("The total weight of the cargo"),
+                                fieldWithPath("shipmentCargo.totalCapacity").description("The total capacity of cargo"),
+                                fieldWithPath("shipmentCargo.cargoDescription").description("The description of the cargo"),
+                                fieldWithPath("shipmentCargo.dangerousGoods").description("Is true if the cargo includes dangerous goods"),
+                                fieldWithPath("shipmentServices").description("Includes information about the Services of the shipment"),
+                                fieldWithPath("shipmentServices.preCarriage").description("Is true if additional actions have to take place before the shipment"),
+                                fieldWithPath("shipmentServices.exportInsurance").description("Is true if the shipment has export insurance"),
+                                fieldWithPath("shipmentServices.exportCustomsClearance").description("Is true if the shipment has to pay customs for export"),
+                                fieldWithPath("shipmentServices.flight").description("Is true if the shipment includes a flight"),
+                                fieldWithPath("shipmentServices.importInsurance").description("Is true if the shipment has import insurance"),
+                                fieldWithPath("shipmentServices.importCustomsClearance").description("Is true if the shipment has to pay customs for import"),
+                                fieldWithPath("shipmentServices.onCarriage").description("Is true if additional actions have to take place after the shipment"),
+                                fieldWithPath("shipmentFlight").description("Includes information about the shipmentFlight"),
+                                fieldWithPath("shipmentFlight.flightNumber").description("The number of the flight"),
+                                fieldWithPath("shipmentFlight.airline").description("The airline of the flight"),
+                                fieldWithPath("shipmentFlight.departureAirport").description("The departure airport of the flight"),
+                                fieldWithPath("shipmentFlight.destinationAirport").description("The destination airport of the flight"),
+                                fieldWithPath("shipmentFlight.departureTime").description("The time when the flight starts"),
+                                fieldWithPath("shipmentFlight.destinationTime").description("The time when the flight lands"),
+                                fieldWithPath("shipmentFlight.price").description("The price of the flight")),
+                        responseFields(fieldDescriptorShipmentResource)));
+    }
+
+    @Test
+    public void addFlightToShipmentTest() throws Exception {
+        addFlightToShipment()
+                .andExpect(status().isOk()).andDo(
+                this.documentationHandler.document(
+                        requestFields(
+                                fieldWithPath("shipmentFlight").description("Includes information about the shipmentFlight"),
+                                fieldWithPath("shipmentFlight.flightNumber").description("The number of the flight"),
+                                fieldWithPath("shipmentFlight.airline").description("The airline of the flight"),
+                                fieldWithPath("shipmentFlight.departureAirport").description("The departure airport of the flight"),
+                                fieldWithPath("shipmentFlight.destinationAirport").description("The destination airport of the flight"),
+                                fieldWithPath("shipmentFlight.departureTime").description("The time when the flight starts"),
+                                fieldWithPath("shipmentFlight.destinationTime").description("The time when the flight lands"),
+                                fieldWithPath("shipmentFlight.price").description("The price of the flight")),
+                        responseFields(fieldDescriptorShipmentResource)));
+    }
 
     @Test
     public void listShipmentTest() throws Exception {
@@ -437,6 +494,28 @@ public class RestApiDocumentation {
 
     }
 
+    private ResultActions updateShipment() throws Exception {
+
+        MvcResult result = createShipment().andExpect(status().isCreated()).andReturn();
+
+        JSONObject jsonResult = new JSONObject(result.getResponse().getContentAsString());
+        String trackingId = jsonResult.getString("trackingId");
+
+        return this.mockMvc.perform(put(ShipmentController.SHIPMENT_RESOURCE_PATH + "/flight/" + trackingId).contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsBytes(this.updateShipmentResourceHashMap())));
+    }
+
+    private ResultActions addFlightToShipment() throws Exception {
+
+        MvcResult result = createShipment().andExpect(status().isCreated()).andReturn();
+
+        JSONObject jsonResult = new JSONObject(result.getResponse().getContentAsString());
+        String trackingId = jsonResult.getString("trackingId");
+
+        return this.mockMvc.perform(put(ShipmentController.SHIPMENT_RESOURCE_PATH + "/flight/" + trackingId).contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsBytes(this.addFlightToShipmentResourceHashMap())));
+    }
+
     private String createCustomer(String name) throws Exception {
         MvcResult result = this.mockMvc
                 .perform(post(CustomerController.CUSTOMER_RESOURCE_PATH)
@@ -481,23 +560,80 @@ public class RestApiDocumentation {
         services.put("preCarriage", true);
         services.put("exportInsurance", false);
         services.put("exportCustomsClearance", true);
-        services.put("shipmentFlight", true);
+        services.put("flight", true);
         services.put("importInsurance", true);
         services.put("importCustomsClearance", false);
         services.put("onCarriage", true);
         shipment.put("shipmentServices", services);
 
         Map<String, Object> flight = new LinkedHashMap<>();
-        flight.put("flightNumber", "1234");
-        flight.put("airline", "Air Berlin");
-        flight.put("departureAirport", "Stuttgart");
-        flight.put("destinationAirport", "Berlin");
-        flight.put("departureTime", "1999-11-27 15:49:37,459");
-        flight.put("destinationTime", "1999-11-27 15:49:37,459");  // 2014-04-28T10:20:08.489Z
-        flight.put("price", "100.0");
+        flight.put("flightNumber", "10243");
+        flight.put("airline", "LH");
+        flight.put("departureAirport", "FRA");
+        flight.put("destinationAirport", "STR");
+        flight.put("departureTime", "2015-06-02T21:34:33.616Z");
+        flight.put("destinationTime", "2015-06-02T21:34:33.616Z");
+        flight.put("price", FLIGHTPRICE);
         shipment.put("shipmentFlight", flight);
 
         return shipment;
+    }
+
+    private Map<String, Object>  updateShipmentResourceHashMap() throws Exception {
+        String uuidSender = createCustomer("Herbert Update");
+        String uuidReceiver = createCustomer("Herbert Update");
+        Map<String, Object> shipment = new LinkedHashMap<>();
+        shipment.put("uuidSender", uuidSender);
+        shipment.put("uuidReceiver", uuidReceiver);
+        shipment.put("customerTypeEnum", "RECEIVER");
+
+        Map<String, Object> cargo = new LinkedHashMap<>();
+        cargo.put("numberPackages", "55");
+        cargo.put("totalWeight", "400");
+        cargo.put("totalCapacity", "322.5");
+        cargo.put("cargoDescription", "this cargo includes pens and other writing articles Update");
+        cargo.put("dangerousGoods", false);
+        shipment.put("shipmentCargo", cargo);
+
+        Map<String, Object> services = new LinkedHashMap<>();
+        services.put("preCarriage", true);
+        services.put("exportInsurance", false);
+        services.put("exportCustomsClearance", true);
+        services.put("flight", true);
+        services.put("importInsurance", true);
+        services.put("importCustomsClearance", false);
+        services.put("onCarriage", true);
+        shipment.put("shipmentServices", services);
+
+        Map<String, Object> flight = new LinkedHashMap<>();
+        flight.put("flightNumber", "999999");
+        flight.put("airline", "LH");
+        flight.put("departureAirport", "UPD");
+        flight.put("destinationAirport", "UPD");
+        flight.put("departureTime", "2015-06-02T21:34:33.616Z");
+        flight.put("destinationTime", "2015-06-02T21:34:33.616Z");
+        flight.put("price", FLIGHTPRICE);
+        shipment.put("shipmentFlight", flight);
+
+        return shipment;
+    }
+
+    private Map<String, Object> addFlightToShipmentResourceHashMap() throws Exception {
+
+        Map<String, Object> flight = new LinkedHashMap<>();
+        Map<String, Object> shipmentFlight = new LinkedHashMap<>();
+
+        shipmentFlight.put("airline", "LH");
+        shipmentFlight.put("flightNumber", "1023243");
+        shipmentFlight.put("departureAirport", "FRAA");
+        shipmentFlight.put("destinationAirport", "STRR");
+        shipmentFlight.put("departureTime", "2015-06-02T21:34:33.616Z");
+        shipmentFlight.put("destinationTime", "2015-06-02T21:34:33.616Z");
+        shipmentFlight.put("price", FLIGHTPRICE);
+
+        flight.put("shipmentFlight", shipmentFlight);
+
+        return flight;
     }
 
     // Create a Shipment without Cargo informations.
@@ -521,11 +657,21 @@ public class RestApiDocumentation {
         services.put("preCarriage", true);
         services.put("exportInsurance", false);
         services.put("exportCustomsClearance", true);
-        services.put("shipmentFlight", true);
+        services.put("flight", true);
         services.put("importInsurance", true);
         services.put("importCustomsClearance", false);
         services.put("onCarriage", true);
         shipment.put("shipmentServices", services);
+
+        Map<String, Object> flight = new LinkedHashMap<>();
+        flight.put("flightNumber", "10243");
+        flight.put("airline", "LH");
+        flight.put("departureAirport", "FRA");
+        flight.put("destinationAirport", "STR");
+        flight.put("departureTime", "2015-06-02T21:34:33.616Z");
+        flight.put("destinationTime", "2015-06-02T21:34:33.616Z");
+        flight.put("price", FLIGHTPRICE);
+        shipment.put("shipmentFlight", flight);
 
         return shipment;
     }
