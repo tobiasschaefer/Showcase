@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="supplier-simulator-backend" type="js.build_tools.npm" factoryName="npm">
+    <package-json value="$PROJECT_DIR$/services/educama-supplier-simulator-backend/package.json" />
+    <command value="start" />
+    <node-interpreter value="project" />
+    <envs>
+      <env name="SUPPLIER_SIMULATOR_QUEUE" value="amqp://rabbitmq:secret@localhost:5672" />
+      <env name="SUPPLIER_SIMULATOR_DATABASE" value="mongodb://localhost:27017/educama-supplier-simulator" />
+      <env name="PORT" value="8085" />
+    </envs>
+    <method />
+  </configuration>
+</component>

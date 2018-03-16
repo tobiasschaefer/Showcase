@@ -15,9 +15,9 @@ target/
 .springBeans
 
 ### IntelliJ IDEA ###
-.idea
+# The workspace.xml file contains individual configuration that should not be shared amongst team members.
+.idea/workspace.xml
 *.iws
-*.iml
 *.ipr
 .out
 

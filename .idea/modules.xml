@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/acceptance-tests/acceptance-tests.iml" filepath="$PROJECT_DIR$/acceptance-tests/acceptance-tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/educama-backend.iml" filepath="$PROJECT_DIR$/backend/educama-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/educama-supplier-simulator-backend/educama-supplier-simulator-backend.iml" filepath="$PROJECT_DIR$/services/educama-supplier-simulator-backend/educama-supplier-simulator-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/educama-supplier-simulator-frontend/educama-supplier-simulator-frontend.iml" filepath="$PROJECT_DIR$/services/educama-supplier-simulator-frontend/educama-supplier-simulator-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/flightinformation/flightinformation.iml" filepath="$PROJECT_DIR$/services/flightinformation/flightinformation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/frontend.iml" filepath="$PROJECT_DIR$/frontend/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scripts/scripts.iml" filepath="$PROJECT_DIR$/scripts/scripts.iml" />
+    </modules>
+  </component>
+</project>

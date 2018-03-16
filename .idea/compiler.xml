@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="acceptance-tests" />
+        <module name="api" />
+        <module name="educama-acceptance-tests" />
+        <module name="educama-backend" />
+        <module name="flightinformation" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="acceptance-tests" target="1.8" />
+      <module name="api" target="1.8" />
+      <module name="backend" target="1.8" />
+      <module name="educama-acceptance-tests" target="1.8" />
+      <module name="educama-backend" target="1.8" />
+      <module name="flightinformation" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
