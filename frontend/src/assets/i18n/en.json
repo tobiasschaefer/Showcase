@@ -27,10 +27,13 @@
   "DATE": "Date",
   "ERROR-COMPONENT_TITLE": "Attention",
   "FLIGHT-AIRLINE": "Airline",
+  "FLIGHT-AIRPORT": "Airport",
+  "FLIGHT-CITY": "City",
   "FLIGHT-DEPARTURE": "Departure",
   "FLIGHT-DESTINATION": "Destination",
-  "FLIGHT-NUMBER": "Flight number",
-  "Flight-PRICE": "Flight price",
+  "FLIGHT-NUMBER": "Flight Number",
+  "FLIGHT-ORGANIZE": "Organize Flight",
+  "Flight-PRICE": "Flight Price",
   "GENERIC_CANCEL": "Cancel",
   "GENERIC_CREATE": "Create",
   "GENERIC_ID": "ID",
@@ -86,5 +89,7 @@
   "TASK-LIST-PAGE-COMPONENT-TITLE": "All tasks",
   "TIME": "Time",
   "ACTIVE-TASK-LIST-TITLE": "Active Tasks",
-  "ENABLED-TASK-LIST-TITLE": "Enabled Tasks"
+  "ENABLED-TASK-LIST-TITLE": "Enabled Tasks",
+  "SHIPMENT-DETAILS": "Shipment Details",
+  "ACTIVATE-TASK":"Activate"
 }

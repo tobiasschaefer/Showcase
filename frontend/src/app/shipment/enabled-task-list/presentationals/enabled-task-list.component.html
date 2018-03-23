@@ -2,7 +2,7 @@
   id="task-list-component_enabledTask-table"
   [value]="enabledTaskList">
   <p-column field="name" header="{{'TASK-RESOURCE_TASK-NAME' | translate}}"></p-column>
-  <p-column header="Activate">
+  <p-column header="{{'ACTIVATE-TASK' | translate}}">
     <ng-template let-enabledTask="rowData" pTemplate="body">
       <i class="fa fa-play" (click)="onRowSelect(enabledTask)" aria-hidden="true"></i>
     </ng-template>

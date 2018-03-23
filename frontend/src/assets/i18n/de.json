@@ -27,9 +27,12 @@
   "DATE": "Datum",
   "ERROR-COMPONENT_TITLE": "Achtung",
   "FLIGHT-AIRLINE": "Fluggesellschaft",
+  "FLIGHT-AIRPORT": "Flughafen",
+  "FLIGHT-CITY": "Stadt",
   "FLIGHT-DEPARTURE": "Start",
   "FLIGHT-DESTINATION": "Ziel",
   "FLIGHT-NUMBER": "Flugnummer",
+  "FLIGHT-ORGANIZE": "Flug Organisieren",
   "Flight-PRICE": "Flugpreis",
   "GENERIC_CANCEL": "Abbrechen",
   "GENERIC_CREATE": "Anlegen",
@@ -86,5 +89,7 @@
   "TASK-LIST-PAGE-COMPONENT-TITLE": "Alle Aufgaben",
   "TIME": "Uhrzeit",
   "ACTIVE-TASK-LIST-TITLE": "Aktive Aufgaben",
-  "ENABLED-TASK-LIST-TITLE": "Aktivierbare Aufgaben"
+  "ENABLED-TASK-LIST-TITLE": "Aktivierbare Aufgaben",
+  "SHIPMENT-DETAILS": "Transportinformationen",
+  "ACTIVATE-TASK":"Aktivieren"
 }

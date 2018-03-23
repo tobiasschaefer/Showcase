@@ -1,100 +1,150 @@
 <p-panel header="{{'ORGANIZE-FLIGHT'|translate}}">
-  <div class="ui-g">
+  <div class="main-div ui-g">
 
     <div class="ui-g">
-      <div class="ui-g-12 ui-md-2">
-        <label>{{'FLIGHT-NUMBER' | translate}}</label>
+      <div class="top-div ui-g-12">
+        <div class="ui-g-12 ui-md-2">
+          <label>{{'FLIGHT-NUMBER' | translate}}</label>
+        </div>
+        <div class="ui-g-12 ui-md-10">
+          <input
+            pInputText
+            [(ngModel)]="flightNumber"
+            type="text"
+          >
+        </div>
+        <div class="ui-g-12 ui-md-2">
+          <label>{{'FLIGHT-AIRLINE' | translate}}</label>
+        </div>
+        <div class="ui-g-12 ui-md-10">
+          <p-autoComplete placeholder="Airline"
+                          field="name"
+                          [(ngModel)]="selectedAirline"
+                          [suggestions]="airlineSuggestion"
+                          (completeMethod)="loadAirlineSuggestions($event)"
+                          (onSelect)="onAirlineSelected($event)"
+          ></p-autoComplete>
+        </div>
+        <div class="ui-g-12 ui-md-2">
+          <label>{{'FLIGHT-PRICE' | translate}}</label>
+        </div>
+        <div class="ui-g-12 ui-md-10">
+          <input
+            pInputText
+            [(ngModel)]="price"
+            type="text"
+          >
+        </div>
       </div>
-      <div class="ui-g-12 ui-md-10 ">
-        <input type="text" pInputText>
-      </div>
-      <div class="ui-g-12 ui-md-2">
-        <label>{{'FLIGHT-AIRLINE' | translate}}</label>
-      </div>
-      <div class="ui-g-12 ui-md-10">
-        <input type="text" pInputText>
-      </div>
-      <div class="ui-g-12 ui-md-2">
-        <label>{{'FLIGHT-PRICE' | translate}}</label>
-      </div>
-      <div class="ui-g-12 ui-md-10">
-        <input type="text" pInputText>
-      </div>
-
-<!-----Center Bottom------->
-      <div class="ui-g">
+      <!-----Center Bottom------->
+      <div class="bottom-div ui-g">
         <div class="ui-g-12 ui-md-5">
           <div class="ui-g-12">
-            <label class="start">{{'FLIGHT-DEPARTURE' | translate}}</label>
+            <label class="start-label">{{'FLIGHT-DEPARTURE' | translate}}</label>
+            <!-- <span class="ui-inputgroup-addon"><i class="fa fa-angle-right fa-2x"></i></span>-->
           </div>
           <div class="ui-g-12 ui-md-3">
-            <label>{{'FLIGHT-NUMBER' | translate}}</label>
+            <label>{{'FLIGHT-CITY' | translate}}</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
+            <p-autoComplete placeholder="Airport"
+                            field="city"
+                            [suggestions]="airportSuggestion"
+                            (completeMethod)="loadAirportSuggestions($event)"
+                            (onSelect)="onStartAirportSelected($event)"
+            ></p-autoComplete>
           </div>
           <div class="ui-g-12 ui-md-3">
-            <label>Kürzel:</label>
+            <label>{{'FLIGHT-AIRPORT' | translate}}</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
+            <input
+              pInputText
+              [(ngModel)]="departureAirport"
+              type="text"
+            >
           </div>
           <div class="ui-g-12 ui-md-3">
             <label>{{'DATE' | translate}}</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
-            <span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+            <p-calendar [(ngModel)]="departureDate"
+                        [showIcon]="true"
+            ></p-calendar>
           </div>
           <div class="ui-g-12 ui-md-3">
             <label>{{'TIME' | translate}}</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
-            <span class="ui-inputgroup-addon"><i class="fa fa-clock-o"></i></span>
+            <p-calendar [(ngModel)]="departureDate"
+                        [timeOnly]="true"
+            ></p-calendar>
+            <span class="ui-inputgroup-addon"><i class="fa fa-clock-o fa-lg"></i></span>
           </div>
         </div>
+        <!----Middle part Plane icon-->
         <div class="plane-class ui-g-12 ui-md-1">
-          <span><i class="fa fa-plane fa-4x"></i></span>
+          <span class="plane-icon-span"><i class="fa fa-plane fa-4x"></i></span>
         </div>
-
+        <!----Rightside Finish area-->
         <div class=" right-side ui-g-12 ui-md-5">
           <div class="ui-g-12">
-            <label class="finish" >{{'FLIGHT-DESTINATION' | translate}}</label>
+            <label class="finish">{{'FLIGHT-DESTINATION' | translate}}</label>
+            <!--<span class="ui-inputgroup-addon"><i class="fa fa-angle-right fa-lg"></i></span>-->
           </div>
           <div class="ui-g-12 ui-md-3">
-            <label>{{'FLIGHT-NUMBER' | translate}}</label>
-          </div>
-          <div class="ui-g-12 ui-md-9 ">
-            <input type="text" pInputText>
-          </div>
-          <div class="ui-g-12 ui-md-3">
-            <label>Kürzel:</label>
+            <label>{{'FLIGHT-CITY' | translate}}</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
+            <p-autoComplete placeholder="Airport"
+                            field="city"
+                            [suggestions]="airportSuggestion"
+                            (completeMethod)="loadAirportSuggestions($event)"
+                            (onSelect)="onDestinationAirportSelected($event)"
+            ></p-autoComplete>
+          </div>
+          <div class="ui-g-12 ui-md-3">
+            <label>{{'FLIGHT-AIRPORT' | translate}}</label>
+          </div>
+          <div class="ui-g-12 ui-md-9">
+            <input
+              pInputText
+              [(ngModel)]="destinationAirport"
+              type="text"
+            >
           </div>
           <div class="ui-g-12 ui-md-3">
             <label>{{'DATE' | translate}}</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
-            <span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+            <p-calendar
+              [(ngModel)]="destinationDate"
+              [showIcon]="true"
+            ></p-calendar>
           </div>
           <div class="ui-g-12 ui-md-3">
             <label>{{'TIME' | translate}}</label>
           </div>
           <div class="ui-g-12 ui-md-9">
-            <input type="text" pInputText>
-            <span class="ui-inputgroup-addon"><i class="fa fa-clock-o"></i></span>
+            <p-calendar
+              [(ngModel)]="destinationDate"
+              [timeOnly]="true"
+            ></p-calendar>
+            <span class="ui-inputgroup-addon"><i class="fa fa-clock-o fa-lg"></i></span>
           </div>
         </div>
       </div>
     </div>
     <!------Footer-------->
     <div class="footer-class ui-g-12">
-      <button style="float:right;" class="save-button" pButton type="button" label="Abschließen" icon="fa-check" class="ui-button-success" iconPos="right"></button>
-      <button style="float:right;" class="abord-button" pButton type="button" label="Abbrechen" icon="fa-times" class="ui-button-danger" iconPos="right"></button>
+      <button style="float:right;" class="save-button" pButton type="button" label="Abschließen" icon="fa-check"
+              class="ui-button-success" iconPos="right"
+              (click)="saveFlight()"
+      ></button>
+      <button style="float:right;" class="abord-button" pButton type="button" label="Abbrechen" icon="fa-times"
+              class="ui-button-danger" iconPos="right"
+              (click)="cancleFlight()"
+      ></button>
     </div>
   </div>
 </p-panel>
