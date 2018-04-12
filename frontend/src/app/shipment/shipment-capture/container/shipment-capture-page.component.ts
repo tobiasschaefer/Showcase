@@ -9,12 +9,16 @@ import {ShipmentService} from "../../shipment-common/api/shipment.service";
 import {ShipmentCapturePageModel} from "./shipment-capture-page.model";
 import * as _ from "lodash";
 import {RequestEnabledTasksForShipmentAction} from "../../shipment-common/store/enbaled-tasks/enabled-task-list-page.actions";
-import {RequestTasksForShipmentAction} from "../../shipment-common/store/tasks/task-list-page.actions";
+import {
+  CompleteActiveTask,
+  RequestTasksForShipmentAction
+} from "../../shipment-common/store/tasks/task-list-page.actions";
 import {RequestCompletedTaskForShipmentAction} from "../../shipment-common/store/completed-tasks/completed-task-list-page.actions";
 import {ShipmentCaptureSlice} from "../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.slice";
 import {RequestSingleShipment} from "../../shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
 import {ResetShipmentCaptureSliceAction} from "../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.actions";
 import {OrganizeFlightResource} from "../../shipment-common/api/resources/organize-flight.resource";
+import {CompleteTaskEvent} from "../presentationals/events/complete-task.event";
 
 @Component({
   selector: "educama-shipment-capture-page",
@@ -91,6 +95,13 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
     this._router.navigate(["/shipments"]);
   }
 
+  /*
+   * Handles the complete task event for a shipment
+   */
+  public oncompleteTaskEvent(completeTaskEvent: CompleteTaskEvent) {
+    this._store.dispatch(new CompleteActiveTask(completeTaskEvent.trackingId, completeTaskEvent.taskName));
+  }
+
   // ***************************************************
   // Data Retrieval
   // ***************************************************
@@ -99,7 +110,7 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
     this.shipmentCaptureModel.shipment = shipmentCaptureSlice.shipment;
   }
 
-  private   mapShipmentFromSaveShipmentEvent(saveShipmentEvent: SaveShipmentEvent): ShipmentResource {
+  private mapShipmentFromSaveShipmentEvent(saveShipmentEvent: SaveShipmentEvent): ShipmentResource {
     const shipment = new ShipmentResource();
     shipment.uuidSender = saveShipmentEvent.uuidSender;
     shipment.uuidReceiver = saveShipmentEvent.uuidReceiver;
@@ -107,7 +118,7 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
     shipment.shipmentCargo = saveShipmentEvent.shipmentCargo;
     shipment.shipmentServices = saveShipmentEvent.shipmentServices;
     shipment.trackingId = saveShipmentEvent.trackingId;
-    if (_.isUndefined(shipment.shipmentFlight )) {
+    if (_.isUndefined(shipment.shipmentFlight)) {
       shipment.shipmentFlight = new OrganizeFlightResource("", "", 0, "", "2016-12-31T00:00:00Z", "", "2016-12-31T00:00:00Z");
       return shipment;
     } else {

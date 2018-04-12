@@ -67,4 +67,13 @@ export class TaskService {
   public manuallyStartEnabledTask(trackingId: string, name: string): Observable<TaskListResource> {
     return this._restClientService.post(this.TASK_RESOURCE_PATH + "/enabled/start/" + trackingId + "/" + name);
   }
+
+  /*
+  * Complete a task by its name
+  *
+  * @return An observable array of all remaining active tasks for a shipment
+  */
+  public manualyCompleteTaskByName(trackingId: string, name: string): Observable<TaskListResource> {
+    return this._restClientService.post(this.TASK_RESOURCE_PATH + "/active/complete/" + trackingId + "/" + name);
+  }
 }

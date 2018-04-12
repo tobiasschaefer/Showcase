@@ -22,6 +22,12 @@ export function taskListPageReducer(state: TaskListSlice = TASK_LIST_SLICE_INITI
         return Object.assign({}, state, {
           loading: false
         });
+      case actions.COMPLETE_ACTIVE_TASK_SUCCESSFUL:
+        const completeTasksSuccessfulAction = action as actions.CompleteActiveTaskSuccessful;
+        return Object.assign({}, state, {
+          taskList: completeTasksSuccessfulAction.payload.tasks,
+          loading: false
+        });
       default:
         return state;
     }

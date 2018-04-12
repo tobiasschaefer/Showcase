@@ -2,6 +2,7 @@
     <educama-shipment-capture
             [shipment]="shipmentCaptureModel.shipment"
             (saveShipmentEvent)="onSaveShipmentEvent($event)"
+            (completeTaskEvent)="oncompleteTaskEvent($event)"
             (createShipmentCancellationEvent)="onSaveShipmentCancellationEvent($event)"
     >
     </educama-shipment-capture>

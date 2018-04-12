@@ -6,7 +6,10 @@ import * as actions from "../store/tasks/task-list-page.actions";
 import {TaskListSlice} from "../store/tasks/task-list-page.slice";
 import {Observable} from "rxjs/Observable";
 import {TaskService} from "../api/task.service";
-import {RequestTasksFailedAction, RequestTasksSuccessfulAction} from "../store/tasks/task-list-page.actions";
+import {
+  CompleteActiveTaskSuccessful, RequestTasksFailedAction,
+  RequestTasksSuccessfulAction
+} from "../store/tasks/task-list-page.actions";
 
 @Injectable()
 export class TaskListEffect {
@@ -35,4 +38,11 @@ export class TaskListEffect {
     .map(taskListSlice => new RequestTasksSuccessfulAction(taskListSlice))
     .catch(() => Observable.of(new RequestTasksFailedAction()));
 
+  @Effect()
+  completeActiveTask = this._actions
+    .ofType(actions.COMPLETE_ACTIVE_TASK)
+    .switchMap((action: actions.CompleteActiveTask) =>
+      this._taskService.manualyCompleteTaskByName(action.trackingId, action.taskName)
+    )
+    .map((payload) => new CompleteActiveTaskSuccessful(payload));
 }
