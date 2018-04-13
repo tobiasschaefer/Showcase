@@ -1,4 +1,4 @@
-<p-panel header="{{'ORGANIZE-FLIGHT'|translate}}">
+<p-panel header="{{'FLIGHT-ORGANIZE'|translate}}">
   <div class="main-div ui-g">
 
     <div class="ui-g">
@@ -137,11 +137,11 @@
     </div>
     <!------Footer-------->
     <div class="footer-class ui-g-12">
-      <button style="float:right;" class="save-button" pButton type="button" label="Abschließen" icon="fa-check"
+      <button style="float:right;" class="save-button" pButton type="button" label="{{'GENERIC_CREATE' | translate}}" icon="fa-check"
               class="ui-button-success" iconPos="right"
               (click)="saveFlight()"
       ></button>
-      <button style="float:right;" class="abord-button" pButton type="button" label="Abbrechen" icon="fa-times"
+      <button style="float:right;" class="abord-button" pButton type="button" label="{{'GENERIC_CANCEL' | translate}}" icon="fa-times"
               class="ui-button-danger" iconPos="right"
               (click)="cancleFlight()"
       ></button>

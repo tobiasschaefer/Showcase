@@ -33,7 +33,7 @@
   "FLIGHT-DESTINATION": "Ziel",
   "FLIGHT-NUMBER": "Flugnummer",
   "FLIGHT-ORGANIZE": "Flug Organisieren",
-  "Flight-PRICE": "Flugpreis",
+  "FLIGHT-PRICE": "Flugpreis",
   "GENERIC_CANCEL": "Abbrechen",
   "GENERIC_CREATE": "Anlegen",
   "GENERIC_ID": "ID",
