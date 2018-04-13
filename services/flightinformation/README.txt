@@ -8,7 +8,7 @@ Build the application: ./mvnw clean install
 Run the application: ./mvnw spring-boot:run
 
 The raw airlines, airports and flight connections data are plain csv files which can be downloaded from https://openflights.org/data.html and uploaded into the service. For this purpose the service provides a graphical user interface which can be used for uploading data.
-The UI is locally accessed via the following URL: http://localhost:8080/csvUpload
+The UI is locally accessed via the following URL: http://localhost:8083/csvUpload
 
 ## Running the application on Cloud Foundry
 When running on Cloud Foundry the application is bound to Mongo DB service specified in the manifest.yml
