@@ -85,6 +85,51 @@ include::{snippets}/createShipmentTest/http-response.adoc[]
 ==== Response structure
 include::{snippets}/createShipmentTest/response-fields.adoc[]
 
+=== Update Shipment
+
+A `PUT` request is used to update a shipment.
+
+==== Example Request
+include::{snippets}/updateShipmentTest/http-request.adoc[]
+
+==== Request structure
+include::{snippets}/updateShipmentTest/request-fields.adoc[]
+
+==== Example Response
+include::{snippets}/updateShipmentTest/http-response.adoc[]
+
+==== Response structure
+include::{snippets}/updateShipmentTest/response-fields.adoc[]
+
+=== Add Flight to Shipment
+
+A `PUT` request is used to add a flight to a shipment.
+
+==== Example Request
+include::{snippets}/addFlightToShipmentTest/http-request.adoc[]
+
+==== Request structure
+include::{snippets}/addFlightToShipmentTest/request-fields.adoc[]
+
+==== Example Response
+include::{snippets}/addFlightToShipmentTest/http-response.adoc[]
+
+==== Response structure
+include::{snippets}/addFlightToShipmentTest/response-fields.adoc[]
+
+=== Get a Shipment
+
+A `GET` request is used to get a single shipment.
+
+==== Example Request
+include::{snippets}/getShipmentTest/http-request.adoc[]
+
+==== Example Response
+include::{snippets}/getShipmentTest/http-response.adoc[]
+
+==== Response structure
+include::{snippets}/getShipmentTest/response-fields.adoc[]
+
 === List of Shipments
 
 A `GET` request is used to get a list of shipments.
@@ -102,9 +147,9 @@ include::{snippets}/listShipmentTest/response-fields.adoc[]
 
 This resource provides the entry point for tasks.
 
-=== List of Tasks
+=== List of Active Tasks
 
-A `GET` request is used to get a list of tasks.
+A `GET` request is used to get a list of all active tasks.
 
 ==== Example Request
 include::{snippets}/listTasksTest/http-request.adoc[]
@@ -115,9 +160,9 @@ include::{snippets}/listTasksTest/http-response.adoc[]
 ==== Response structure
 include::{snippets}/listTasksTest/response-fields.adoc[]
 
-=== List of Completed Tasks
+=== List of Completed Tasks for a Shipment
 
-A `GET` request is used to get a list of completed tasks.
+A `GET` request is used to get a list of completed tasks for a specific shipment.
 
 ==== Example Request
 include::{snippets}/getCompletedTasksTest/http-request.adoc[]
@@ -128,9 +173,9 @@ include::{snippets}/getCompletedTasksTest/http-response.adoc[]
 ==== Response structure
 include::{snippets}/getCompletedTasksTest/response-fields.adoc[]
 
-=== List of active tasks for a shipment
+=== List of Active Tasks for a Shipment
 
-A `GET` request is used to get a list of active tasks.
+A `GET` request is used to get a list of active tasks for a specific shipment.
 
 ==== Example Request
 include::{snippets}/getActiveTasksForShipmentTest/http-request.adoc[]
@@ -141,9 +186,9 @@ include::{snippets}/getActiveTasksForShipmentTest/http-response.adoc[]
 ==== Response structure
 include::{snippets}/getActiveTasksForShipmentTest/response-fields.adoc[]
 
-=== List of enabled tasks for a shipment
+=== List of Enabled Tasks for a Shipment
 
-A `GET` request is used to get a list of enabled tasks for a shipment.
+A `GET` request is used to get a list of enabled tasks for a specific shipment.
 
 ==== Example Request
 include::{snippets}/getEnabledTasksTest/http-request.adoc[]

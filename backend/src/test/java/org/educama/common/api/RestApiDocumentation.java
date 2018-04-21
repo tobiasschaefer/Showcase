@@ -275,9 +275,10 @@ public class RestApiDocumentation {
                         responseFields(fieldDescriptorShipmentResource)));
     }
 
+    @Test
     public void updateShipmentTest() throws Exception {
         updateShipment()
-                .andExpect(status().isCreated()).andDo(
+                .andExpect(status().isOk()).andDo(
                 this.documentationHandler.document(
                         requestFields(fieldWithPath("uuidSender").description("the UUID of the sender"),
                                 fieldWithPath("uuidReceiver").description("the UUID of the receiver"),
@@ -321,6 +322,18 @@ public class RestApiDocumentation {
                                 fieldWithPath("shipmentFlight.departureTime").description("The time when the flight starts"),
                                 fieldWithPath("shipmentFlight.destinationTime").description("The time when the flight lands"),
                                 fieldWithPath("shipmentFlight.price").description("The price of the flight")),
+                        responseFields(fieldDescriptorShipmentResource)));
+    }
+
+    @Test
+    public void getShipmentTest() throws Exception {
+        MvcResult result = createShipment().andExpect(status().isCreated()).andReturn();
+        JSONObject jsonResult = new JSONObject(result.getResponse().getContentAsString());
+        String trackingId = jsonResult.getString("trackingId");
+
+
+        this.mockMvc.perform(get("/educama/v1/shipments/" + trackingId)).andExpect(status().isOk())
+                .andDo(this.documentationHandler.document(
                         responseFields(fieldDescriptorShipmentResource)));
     }
 
