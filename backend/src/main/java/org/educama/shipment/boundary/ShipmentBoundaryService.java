@@ -46,6 +46,14 @@ public interface ShipmentBoundaryService {
     InvoiceResource createInvoice(String trackingId, Invoice saveInvoiceResource);
 
     /**
+     * Retrieves all matching invoices for a shipment.
+     *
+     * @param trackingId to get required shipment
+     * @return returns a collection of matching Invoices
+     */
+    Collection<Invoice> getInvoices(String trackingId);
+
+    /**
      * Retrieves one shipment and updates it.
      *
      * @param trackingId to get required shipment

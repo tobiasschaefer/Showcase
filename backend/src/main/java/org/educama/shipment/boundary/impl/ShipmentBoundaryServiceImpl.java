@@ -1,20 +1,19 @@
 package org.educama.shipment.boundary.impl;
 
 import org.camunda.bpm.engine.ProcessEngine;
-import org.camunda.bpm.engine.TaskAlreadyClaimedException;
 import org.educama.common.exceptions.ResourceNotFoundException;
 import org.educama.shipment.api.resource.InvoiceResource;
 import org.educama.shipment.api.resource.ShipmentResource;
 import org.educama.shipment.boundary.ShipmentBoundaryService;
 import org.educama.shipment.control.ShipmentCaseControlService;
-import org.educama.shipment.model.Invoice;
 import org.educama.shipment.model.Flight;
+import org.educama.shipment.model.Invoice;
 import org.educama.shipment.model.Shipment;
 import org.educama.shipment.process.ShipmentCaseEvaluator;
 import org.educama.shipment.process.tasks.CompleteShipmentOrderTask;
 import org.educama.shipment.process.tasks.CreateInvoiceTask;
-import org.educama.shipment.repository.InvoiceRepository;
 import org.educama.shipment.process.tasks.OrganizeFlightTask;
+import org.educama.shipment.repository.InvoiceRepository;
 import org.educama.shipment.repository.ShipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,6 +79,12 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
         Shipment shipment = shipmentRepository.findOneBytrackingId(trackingId);
         ShipmentResource convertedShipment = new ShipmentResource().fromShipment(shipment);
         return convertedShipment;
+    }
+
+    @Override
+    public Collection<Invoice> getInvoices(String trackingId) {
+        Shipment shipment = shipmentRepository.findOneBytrackingId(trackingId);
+        return invoiceRepository.findInvoicesByShipmentId(shipment.getId());
     }
 
     @Override
