@@ -7,6 +7,8 @@ import org.educama.shipment.api.resource.SaveFlightResource;
 import org.educama.shipment.api.resource.SaveShipmentResource;
 import org.educama.shipment.api.resource.ShipmentListResource;
 import org.educama.shipment.api.resource.ShipmentResource;
+import org.educama.shipment.api.resource.InvoiceResource;
+import org.educama.shipment.api.resource.SaveInvoiceResource;
 import org.educama.shipment.boundary.ShipmentBoundaryService;
 import org.educama.shipment.model.Invoice;
 import org.educama.shipment.boundary.ShipmentTaskBoundaryService;
