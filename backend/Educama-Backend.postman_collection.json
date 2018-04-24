@@ -1,13 +1,13 @@
 {
 	"info": {
-		"name": "Educama-Backend copy",
-		"_postman_id": "1f028058-c133-ce94-772b-ba17068c3c3c",
-		"description": "",
+		"_postman_id": "b5a89227-3bc7-45a8-9323-1c63a3c11390",
+		"name": "Educama-Backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Customers",
+			"description": null,
 			"item": [
 				{
 					"name": "Create Customer",
@@ -24,12 +24,12 @@
 							"raw": "{\n\t\"name\": \"Peter Kutschera\",\n\t\"address\": {\n  \t\t\"street\": \"Dieselstr\",\n  \t\t\"streetNo\": \"18/1\",\n  \t\t\"zipCode\": \"70771\",\n  \t\t\"city\": \"Leinfelden-Echterdingen\"\n\t}\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers",
+							"raw": "http://localhost:8091/educama/v1/customers",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -51,15 +51,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Lars D�lfer\",\n\t\"address\": {\n  \t\t\"street\": \"Dieselstr\",\n  \t\t\"streetNo\": \"18/1\",\n  \t\t\"zipCode\": \"70771\",\n  \t\t\"city\": \"Leinfelden-Echterdingen\"\n\t}\n}"
+							"raw": "{\n\t\"name\": \"Lars Dülfer\",\n\t\"address\": {\n  \t\t\"street\": \"Dieselstr\",\n  \t\t\"streetNo\": \"18/1\",\n  \t\t\"zipCode\": \"70771\",\n  \t\t\"city\": \"Leinfelden-Echterdingen\"\n\t}\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers",
+							"raw": "http://localhost:8091/educama/v1/customers",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -84,12 +84,12 @@
 							"raw": "{\n  \"uuid\": \"2409fade-222b-401a-9594-f30873b7f229\",\n  \"name\": \"Peter Kutschera\",\n  \"address\": {\n    \"street\": \"Dieselstr\",\n    \"streetNo\": \"18/2\",\n    \"zipCode\": \"70771\",\n    \"city\": \"Leinfelden-Echterdingen\"\n  }\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers/2409fade-222b-401a-9594-f30873b7f229",
+							"raw": "http://localhost:8091/educama/v1/customers/2409fade-222b-401a-9594-f30873b7f229",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -115,12 +115,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers/f4ed6c6e-4e72-4568-a964-276bfb2fcfeb",
+							"raw": "http://localhost:8091/educama/v1/customers/f4ed6c6e-4e72-4568-a964-276bfb2fcfeb",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -146,12 +146,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers/d92b5280-738e-4363-bb5a-4b7d1954ba53",
+							"raw": "http://localhost:8091/educama/v1/customers/d92b5280-738e-4363-bb5a-4b7d1954ba53",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -177,12 +177,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers",
+							"raw": "http://localhost:8091/educama/v1/customers",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -207,12 +207,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers",
+							"raw": "http://localhost:8091/educama/v1/customers",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -237,12 +237,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/customers/suggestions?term=p",
+							"raw": "http://localhost:8091/educama/v1/customers/suggestions?term=p",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
@@ -252,8 +252,7 @@
 							"query": [
 								{
 									"key": "term",
-									"value": "p",
-									"equals": true
+									"value": "p"
 								}
 							]
 						}
@@ -264,6 +263,7 @@
 		},
 		{
 			"name": "Shipments",
+			"description": null,
 			"item": [
 				{
 					"name": "Create Shipment",
@@ -277,76 +277,19 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"uuidSender\" : \"19b35539-c86c-4169-83aa-ed58b1d94ac1\",\r\n  \"uuidReceiver\" : \"738edb6f-77c7-4652-a138-548cd3b972f1\",\r\n  \"customerTypeEnum\" : \"RECEIVER\",\r\n  \"shipmentCargo\" : {\r\n    \"numberPackages\" : \"5\",\r\n    \"totalWeight\" : \"40\",\r\n    \"totalCapacity\" : \"32.5\",\r\n    \"cargoDescription\" : \"This cargo includes pens and other writing articles\",\r\n    \"dangerousGoods\" : false\r\n  },\r\n  \"shipmentServices\" : {\r\n    \"preCarriage\" : true,\r\n    \"exportInsurance\" : false,\r\n    \"exportCustomsClearance\" : true,\r\n    \"flight\" : true,\r\n    \"importInsurance\" : true,\r\n    \"importCustomsClearance\" : false,\r\n    \"onCarriage\" : true\r\n  },\r\n  \"shipmentFlight\" : {\r\n    \"flightNumber\" : \"10243\",\r\n    \"airline\" : \"LH\",\r\n    \"departureAirport\" : \"FRA\",\r\n    \"destinationAirport\" : \"STR\",\r\n    \"departureTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"destinationTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"price\" : 100.12\r\n  }\r\n}"
+							"raw": "{\n  \"customer\": \"NovaTec Consulting GmbH\",\n  \"senderAddress\": \"Dieselstr. 18/1, 70771 Leinfelden-Echterdingen\",\n  \"receiverAddress\": \"Santa Claus Main Post Office, FI-96930 Arctic Circle, Finland\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/shipments",
+							"raw": "http://localhost:8091/educama/v1/shipments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
 								"shipments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Shipment",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"uuidSender\" : \"19b35539-c86c-4169-83aa-ed58b1d94ac1\",\r\n  \"uuidReceiver\" : \"738edb6f-77c7-4652-a138-548cd3b972f1\",\r\n  \"customerTypeEnum\" : \"RECEIVER\",\r\n  \"shipmentCargo\" : {\r\n    \"numberPackages\" : \"100\",\r\n    \"totalWeight\" : \"200.0\",\r\n    \"totalCapacity\" : \"300.0\",\r\n    \"cargoDescription\" : \"This cargo includes pens and other writing articles\",\r\n    \"dangerousGoods\" : false\r\n  },\r\n  \"shipmentServices\" : {\r\n    \"preCarriage\" : true,\r\n    \"exportInsurance\" : false,\r\n    \"exportCustomsClearance\" : true,\r\n    \"flight\" : true,\r\n    \"importInsurance\" : true,\r\n    \"importCustomsClearance\" : false,\r\n    \"onCarriage\" : true\r\n  },\r\n  \"shipmentFlight\" : {\r\n    \"flightNumber\" : \"999999\",\r\n    \"airline\" : \"LH\",\r\n    \"departureAirport\" : \"UPD\",\r\n    \"destinationAirport\" : \"UPD\",\r\n    \"departureTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"destinationTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"price\" : 100.00\r\n  }\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8081/educama/v1/shipments/ae8e57d1-12ce-4993-ad7a-ce0867af9e0a",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"educama",
-								"v1",
-								"shipments",
-								"ae8e57d1-12ce-4993-ad7a-ce0867af9e0a"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get a single Shipment",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8081/educama/v1/shipments/901bf3d4-0a80-4eeb-84e5-95665702b8d5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"educama",
-								"v1",
-								"shipments",
-								"901bf3d4-0a80-4eeb-84e5-95665702b8d5"
 							]
 						}
 					},
@@ -367,48 +310,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/shipments",
+							"raw": "http://localhost:8091/educama/v1/shipments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
 								"shipments"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Flight to Shipment",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"shipmentFlight\" : {\r\n    \"airline\" : \"LH\",\r\n    \"flightNumber\" : \"1023243\",\r\n    \"departureAirport\" : \"FRAA\",\r\n    \"destinationAirport\" : \"STRR\",\r\n    \"departureTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"destinationTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"price\" : 100.12\r\n  }\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8081/educama/v1/shipments/flight/b5e68857-8019-4317-bbb9-5ea3d1e17a8a",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"educama",
-								"v1",
-								"shipments",
-								"flight",
-								"b5e68857-8019-4317-bbb9-5ea3d1e17a8a"
 							]
 						}
 					},
@@ -442,8 +353,7 @@
 								"invoice",
 								"1a03e950-bdb7-46cd-9fa3-edb154de54f3"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -451,6 +361,7 @@
 		},
 		{
 			"name": "Tasks",
+			"description": null,
 			"item": [
 				{
 					"name": "List All Tasks",
@@ -467,17 +378,16 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/tasks/active",
+							"raw": "http://localhost:8091/educama/v1/tasks",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
-								"tasks",
-								"active"
+								"tasks"
 							]
 						}
 					},
@@ -493,75 +403,21 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8081/educama/v1/tasks/completed/54d18d39-8490-45f1-bb8d-603baf089b2e",
+							"raw": "http://localhost:8091/educama/v1/tasks/completed/f086e52f-817b-455b-ac70-bfd6e78d4ac7",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8081",
+							"port": "8091",
 							"path": [
 								"educama",
 								"v1",
 								"tasks",
 								"completed",
-								"54d18d39-8490-45f1-bb8d-603baf089b2e"
+								"f086e52f-817b-455b-ac70-bfd6e78d4ac7"
 							]
 						},
 						"description": "The request lists all completed tasks for a Shipment."
-					},
-					"response": []
-				},
-				{
-					"name": "List All Active Tasks For Shipment",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8081/educama/v1/tasks/active/54d18d39-8490-45f1-bb8d-603baf089b2e",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"educama",
-								"v1",
-								"tasks",
-								"active",
-								"54d18d39-8490-45f1-bb8d-603baf089b2e"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List All Enabled Tasks For Shipment",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8081/educama/v1/tasks/enabled/54d18d39-8490-45f1-bb8d-603baf089b2e",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"educama",
-								"v1",
-								"tasks",
-								"enabled",
-								"54d18d39-8490-45f1-bb8d-603baf089b2e"
-							]
-						}
 					},
 					"response": []
 				}
