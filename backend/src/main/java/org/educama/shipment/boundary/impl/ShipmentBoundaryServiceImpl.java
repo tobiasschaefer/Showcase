@@ -2,13 +2,17 @@ package org.educama.shipment.boundary.impl;
 
 import org.camunda.bpm.engine.ProcessEngine;
 import org.educama.common.exceptions.ResourceNotFoundException;
+import org.educama.shipment.api.resource.InvoiceResource;
 import org.educama.shipment.api.resource.ShipmentResource;
 import org.educama.shipment.boundary.ShipmentBoundaryService;
 import org.educama.shipment.control.ShipmentCaseControlService;
+import org.educama.shipment.model.Invoice;
 import org.educama.shipment.model.Flight;
 import org.educama.shipment.model.Shipment;
 import org.educama.shipment.process.ShipmentCaseEvaluator;
 import org.educama.shipment.process.tasks.CompleteShipmentOrderTask;
+import org.educama.shipment.process.tasks.CreateInvoiceTask;
+import org.educama.shipment.repository.InvoiceRepository;
 import org.educama.shipment.process.tasks.OrganizeFlightTask;
 import org.educama.shipment.repository.ShipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +33,11 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
 
     private OrganizeFlightTask organizeFlightTask;
 
+    private CreateInvoiceTask createInvoiceTask;
+
     private ShipmentRepository shipmentRepository;
+
+    private InvoiceRepository invoiceRepository;
 
     private ShipmentCaseControlService shipmentCaseControlService;
 
@@ -38,13 +46,17 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
     @Autowired
     public ShipmentBoundaryServiceImpl(CompleteShipmentOrderTask completeShipmentOrderTask,
                                        OrganizeFlightTask organizeFlightTask,
+                                       CreateInvoiceTask createInvoiceTask,
                                        ShipmentRepository shipmentRepository,
+                                       InvoiceRepository invoiceRepository,
                                        ShipmentCaseControlService shipmentCaseControlService,
                                        ShipmentCaseEvaluator shipmentCaseEvaluator,
                                        ProcessEngine processEngine) {
         this.completeShipmentOrderTask = completeShipmentOrderTask;
         this.organizeFlightTask = organizeFlightTask;
+        this.createInvoiceTask = createInvoiceTask;
         this.shipmentRepository = shipmentRepository;
+        this.invoiceRepository = invoiceRepository;
         this.shipmentCaseControlService = shipmentCaseControlService;
         this.shipmentCaseEvaluator = shipmentCaseEvaluator;
     }
@@ -67,6 +79,28 @@ public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
         Shipment shipment = shipmentRepository.findOneBytrackingId(trackingId);
         ShipmentResource convertedShipment = new ShipmentResource().fromShipment(shipment);
         return convertedShipment;
+    }
+
+    @Override
+    public InvoiceResource createInvoice(String trackingId, Invoice saveInvoiceResource) {
+        Shipment shipment = shipmentRepository.findOneBytrackingId(trackingId);
+
+        if (shipment == null) {
+            throw new ResourceNotFoundException("Shipment not found");
+        } else {
+
+            if (createInvoiceTask.isActive(trackingId) && createInvoiceTask.canBeCompleted(trackingId)) {
+                saveInvoiceResource.invoiceNumber = UUID.randomUUID().toString();
+                saveInvoiceResource.shipmentId = shipment.getId();
+                Invoice createdInvoice = invoiceRepository.saveAndFlush(saveInvoiceResource);
+                createInvoiceTask.complete(trackingId);
+                shipmentCaseEvaluator.reevaluateCase(trackingId);
+                InvoiceResource convertedInvoice = new InvoiceResource().fromInvoice(createdInvoice);
+                return convertedInvoice;
+            } else {
+                throw new ResourceNotFoundException("There is no active createInvoiceTask");
+            }
+        }
     }
 
     @Override

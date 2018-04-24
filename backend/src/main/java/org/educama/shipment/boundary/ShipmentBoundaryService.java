@@ -1,6 +1,8 @@
 package org.educama.shipment.boundary;
 
+import org.educama.shipment.api.resource.InvoiceResource;
 import org.educama.shipment.api.resource.ShipmentResource;
+import org.educama.shipment.model.Invoice;
 import org.educama.shipment.model.Flight;
 import org.educama.shipment.model.Shipment;
 
@@ -33,6 +35,15 @@ public interface ShipmentBoundaryService {
      * @return returns the shipment as a resource
      */
     ShipmentResource getShipment(String trackingId);
+
+    /**
+     * Retrieves one invoice.
+     *
+     * @param trackingId to get required shipment
+     * @param saveInvoiceResource to get invoice data
+     * @return returns the shipment as a resource
+     */
+    InvoiceResource createInvoice(String trackingId, Invoice saveInvoiceResource);
 
     /**
      * Retrieves one shipment and updates it.
