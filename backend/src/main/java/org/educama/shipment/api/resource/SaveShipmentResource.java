@@ -7,6 +7,7 @@ import org.educama.enums.ClientType;
 import org.educama.shipment.api.datastructure.CargoDS;
 import org.educama.shipment.api.datastructure.FlightDS;
 import org.educama.shipment.api.datastructure.ServicesDS;
+import org.educama.shipment.model.Flight;
 import org.educama.shipment.model.Shipment;
 
 /**
@@ -33,7 +34,7 @@ public class SaveShipmentResource {
         toConvert.shipmentCargo = shipmentCargo.toCargo();
         toConvert.shipmentServices = shipmentServices.toServices();
         toConvert.customerTypeEnum = customerTypeEnum;
-        toConvert.shipmentFlight = shipmentFlight.toFlight();
+        toConvert.shipmentFlight = (shipmentFlight == null ? new Flight() : shipmentFlight.toFlight());
         return toConvert;
     }
 }

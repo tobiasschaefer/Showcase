@@ -118,12 +118,10 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
     shipment.shipmentCargo = saveShipmentEvent.shipmentCargo;
     shipment.shipmentServices = saveShipmentEvent.shipmentServices;
     shipment.trackingId = saveShipmentEvent.trackingId;
-    if (_.isUndefined(shipment.shipmentFlight)) {
-      shipment.shipmentFlight = new OrganizeFlightResource("", "", 0, "", "2016-12-31T00:00:00Z", "", "2016-12-31T00:00:00Z");
-      return shipment;
-    } else {
-      return shipment;
-    }
+    shipment.shipmentFlight = null;
+
+    return shipment;
+
   }
 
 }
