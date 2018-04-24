@@ -8,15 +8,13 @@ import {Subscription, Observable} from "rxjs";
 import {ShipmentService} from "../../shipment-common/api/shipment.service";
 import {ShipmentCapturePageModel} from "./shipment-capture-page.model";
 import * as _ from "lodash";
-import {RequestEnabledTasksForShipmentAction} from "../../shipment-common/store/enbaled-tasks/enabled-task-list-page.actions";
-import {
-  CompleteActiveTask,
-  RequestTasksForShipmentAction
-} from "../../shipment-common/store/tasks/task-list-page.actions";
-import {RequestCompletedTaskForShipmentAction} from "../../shipment-common/store/completed-tasks/completed-task-list-page.actions";
+import {CompleteActiveTask} from "../../shipment-common/store/tasks/task-list-page.actions";
 import {ShipmentCaptureSlice} from "../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.slice";
 import {RequestSingleShipment} from "../../shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
-import {ResetShipmentCaptureSliceAction} from "../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.actions";
+import {
+  ResetShipmentCaptureSliceAction,
+  ReloadStoreAction
+} from "../../shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.actions";
 import {OrganizeFlightResource} from "../../shipment-common/api/resources/organize-flight.resource";
 import {CompleteTaskEvent} from "../presentationals/events/complete-task.event";
 
@@ -69,8 +67,8 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
   public onSaveShipmentEvent(saveShipmentEvent: SaveShipmentEvent) {
     if (_.isUndefined(this.shipmentCaptureModel.shipment)) {
       this._shipmentService.createShipment(this.mapShipmentFromSaveShipmentEvent(saveShipmentEvent))
-        .subscribe(shipment => {
-          this._router.navigate(["/shipments"]);
+        .subscribe((shipment) => {
+          this._router.navigate(["/caseui/" + shipment.trackingId]);
         });
     } else {
       this._activatedRoute.parent.params.subscribe(params => {
@@ -78,10 +76,7 @@ export class ShipmentCapturePageComponent implements OnInit, OnDestroy {
         this._shipmentService.updateShipment(params["id"], this.mapShipmentFromSaveShipmentEvent(saveShipmentEvent))
           .subscribe(shipment => {
             const trackingId = shipment.trackingId;
-            this._store.dispatch(new RequestEnabledTasksForShipmentAction(trackingId));
-            this._store.dispatch(new RequestTasksForShipmentAction(trackingId));
-            this._store.dispatch(new RequestCompletedTaskForShipmentAction(trackingId));
-            this._store.dispatch(new RequestSingleShipment(trackingId));
+            this._store.dispatch(new ReloadStoreAction(trackingId));
             this._router.navigate(["/caseui/" + trackingId]);
           });
       });

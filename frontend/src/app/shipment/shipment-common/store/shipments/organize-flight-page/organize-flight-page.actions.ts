@@ -15,7 +15,7 @@ export class SaveFlightAction implements Action {
 export class SaveFlightSuccessfultAction implements Action {
   type = SAVE_FLIGHT_SUCCESSFUL_ACTION;
 
-  constructor(public payload: OrganizeFlightResource) {
+  constructor(public payload: OrganizeFlightResource, public trackingId: string) {
 
   }
 }

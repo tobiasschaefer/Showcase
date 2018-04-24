@@ -39,4 +39,9 @@ public class ShipmentsListSteps {
         shipmentsListPage.openShipmentCapturePage();
         shipmentCapturePage.createShipment();
     }
+
+    @Step
+    public void openShipmentList() {
+        shipmentCapturePage.openShipmentList();
+    }
 }

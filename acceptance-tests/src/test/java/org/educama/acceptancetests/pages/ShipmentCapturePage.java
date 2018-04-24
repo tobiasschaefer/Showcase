@@ -25,6 +25,9 @@ public class ShipmentCapturePage extends PageObject {
     @FindBy(id = "shipment-capture-component_create-button")
     WebElement createButton;
 
+    @FindBy(css = "[href='/shipments']")
+    WebElement shipmentList;
+
     public void createShipment() {
         formFieldSender.sendKeys("Apple");
         $("//ul//li[contains(.,\"Apple\")]").waitUntilVisible();
@@ -36,5 +39,9 @@ public class ShipmentCapturePage extends PageObject {
         formFieldReceiver.sendKeys(Keys.DOWN);
         formFieldReceiver.sendKeys(Keys.RETURN);
         clickOn(createButton);
+    }
+
+    public void openShipmentList() {
+        shipmentList.click();
     }
 }

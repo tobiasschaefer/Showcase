@@ -14,6 +14,7 @@ public class ShipmentsListStepDefinitions extends GlobalStepDefinitions {
     @Steps
     ShipmentsListSteps user;
 
+
     /*
      * Empty Caselist
      */
@@ -43,6 +44,7 @@ public class ShipmentsListStepDefinitions extends GlobalStepDefinitions {
 
     @Then("I see 1 shipment")
     public void thenISeeOneShipment() {
+        user.openShipmentsListPage();
         user.checksTheShipmentListForOneShipment();
     }
 }

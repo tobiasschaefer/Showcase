@@ -1,16 +1,17 @@
-import {Component, Input, OnDestroy, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
 import {AirportResource} from "../../flights-common/api/airports/airport.resource";
 import {AirlineResource} from "../../flights-common/api/airlines/airline.resource";
 import {OrganizeFlightFormPageModel} from "../container/organize-flight-form-page.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import { Store} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {AirlineService} from "../../flights-common/api/airlines/airline.service";
 import {AirportService} from "../../flights-common/api/airports/airport.service";
 import {State} from "../../../app.reducers";
 import {RequestSingleShipment} from "../../../shipment/shipment-common/store/shipments/shipment-list-page/shipment-list-page.actions";
-import {ResetShipmentCaptureSliceAction
+import {
+  ResetShipmentCaptureSliceAction, ReloadStoreAction
 } from "../../../shipment/shipment-common/store/shipments/shipment-capture-page/shipment-capture-page.actions";
 import {SaveFlightAction} from "../../../shipment/shipment-common/store/shipments/organize-flight-page/organize-flight-page.actions";
 import {OrganizeFlightResource} from "../../../shipment/shipment-common/api/resources/organize-flight.resource";
@@ -80,11 +81,13 @@ export class OrganizeFlightFormComponent implements OnInit, OnDestroy {
       this.departureAirport, this.departureDate,
       this.destinationAirport, this.destinationDate
     )));
+
+    this._store.dispatch(new ReloadStoreAction(this.trackingId));
     this._router.navigate(["caseui/" + this.trackingId]);
   }
 
   public cancleFlight() {
-    this._store.dispatch(new RequestSingleShipment(this.trackingId));
+    this._store.dispatch(new ReloadStoreAction(this.trackingId));
     this._router.navigate(["caseui/" + this.trackingId]);
   }
 

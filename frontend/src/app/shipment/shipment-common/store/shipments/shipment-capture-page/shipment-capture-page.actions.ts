@@ -4,6 +4,7 @@ export const LOAD_SHIPMENT_SUCCESSFULL = "LOAD_SHIPMENT_SUCCESSFULL";
 export const RESET_SHIPMENT_CAPTURE_SLICE = "type = RESET_SHIPMENT_CAPTURE_SLICE";
 export const UPDATE_SHIPMENT = "UPDATE_SHIPMENT";
 export const UPDATE_SHIPMENT_SUCCESSFULL = "UPDATE_SHIPMENT_SUCCESSFULL";
+export const RELOAD_STORE_ACTION = "RELOAD_STORE_ACTION";
 
 export class LoadShipmentSuccessfullAction implements Action {
   type = LOAD_SHIPMENT_SUCCESSFULL;
@@ -33,6 +34,15 @@ export class UpdateShipmentSucessfullAction implements Action {
   type = UPDATE_SHIPMENT_SUCCESSFULL;
 
   constructor(public payload: ShipmentResource) {
+
+  }
+}
+
+
+export class ReloadStoreAction implements Action {
+  type = RELOAD_STORE_ACTION;
+
+  constructor(public trackingId: string) {
 
   }
 }
