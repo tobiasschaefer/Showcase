@@ -25,7 +25,7 @@ import java.util.List;
  * Boundary service implementation for shipment tasks.
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 public class ShipmentTaskBoundaryServiceImpl implements ShipmentTaskBoundaryService {
 
     @Autowired

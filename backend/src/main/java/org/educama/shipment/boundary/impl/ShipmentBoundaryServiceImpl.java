@@ -22,7 +22,7 @@ import java.util.UUID;
  * Boundary service implementation for shipments.
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 public class ShipmentBoundaryServiceImpl implements ShipmentBoundaryService {
 
     private CompleteShipmentOrderTask completeShipmentOrderTask;
