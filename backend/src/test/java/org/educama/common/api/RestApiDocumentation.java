@@ -522,6 +522,17 @@ public class RestApiDocumentation {
     }
 
     @Test
+    public void listInvoicesTest() throws Exception {
+        ResultActions result = createInvoice();
+        String requestURI = result.andReturn().getRequest().getRequestURI();
+
+        this.mockMvc.perform(get(requestURI)).andExpect(status().isOk())
+                .andDo(this.documentationHandler.document(
+                        responseFields(fieldWithPath("invoices[]").description("An array of invoice objects"))
+                                .andWithPrefix("invoices[].", fieldDescriptorInvoiceResource)));
+    }
+
+    @Test
     public void createInvoiceTest() throws Exception {
         createInvoice()
                 .andExpect(status().isOk()).andDo(
