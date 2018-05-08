@@ -1,150 +1,241 @@
 {
-	"variables": [],
 	"info": {
-		"name": "Educama-Backend",
-		"_postman_id": "a61f2ecc-59d1-fe3a-c4f0-59c7f4eb2c63",
+		"name": "Educama-Backend copy",
+		"_postman_id": "1f028058-c133-ce94-772b-ba17068c3c3c",
 		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Customers",
-			"description": "",
 			"item": [
 				{
 					"name": "Create Customer",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/customers",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Peter Kutschera\",\n\t\"address\": {\n  \t\t\"street\": \"Dieselstr\",\n  \t\t\"streetNo\": \"18/1\",\n  \t\t\"zipCode\": \"70771\",\n  \t\t\"city\": \"Leinfelden-Echterdingen\"\n\t}\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"customers"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Create Customer (second one)",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/customers",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Lars Dülfer\",\n\t\"address\": {\n  \t\t\"street\": \"Dieselstr\",\n  \t\t\"streetNo\": \"18/1\",\n  \t\t\"zipCode\": \"70771\",\n  \t\t\"city\": \"Leinfelden-Echterdingen\"\n\t}\n}"
+							"raw": "{\n\t\"name\": \"Lars D�lfer\",\n\t\"address\": {\n  \t\t\"street\": \"Dieselstr\",\n  \t\t\"streetNo\": \"18/1\",\n  \t\t\"zipCode\": \"70771\",\n  \t\t\"city\": \"Leinfelden-Echterdingen\"\n\t}\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"customers"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Update Customer",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/customers/2409fade-222b-401a-9594-f30873b7f229",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n  \"uuid\": \"2409fade-222b-401a-9594-f30873b7f229\",\n  \"name\": \"Peter Kutschera\",\n  \"address\": {\n    \"street\": \"Dieselstr\",\n    \"streetNo\": \"18/2\",\n    \"zipCode\": \"70771\",\n    \"city\": \"Leinfelden-Echterdingen\"\n  }\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/customers/2409fade-222b-401a-9594-f30873b7f229",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"customers",
+								"2409fade-222b-401a-9594-f30873b7f229"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Delete Customer",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/customers/f4ed6c6e-4e72-4568-a964-276bfb2fcfeb",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Get Customer",
-					"request": {
-						"url": "http://localhost:8081/educama/v1/customers/d92b5280-738e-4363-bb5a-4b7d1954ba53",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "List All Customers",
-					"request": {
-						"url": "http://localhost:8081/educama/v1/customers",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "LIst all Customers (paged)",
-					"request": {
-						"url": "http://localhost:8081/educama/v1/customers",
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/customers/f4ed6c6e-4e72-4568-a964-276bfb2fcfeb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"customers",
+								"f4ed6c6e-4e72-4568-a964-276bfb2fcfeb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/customers/d92b5280-738e-4363-bb5a-4b7d1954ba53",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"customers",
+								"d92b5280-738e-4363-bb5a-4b7d1954ba53"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LIst all Customers (paged)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"customers"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "List Suggestions for Customers",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8081/educama/v1/customers/suggestions?term=p",
 							"protocol": "http",
@@ -162,22 +253,10 @@
 								{
 									"key": "term",
 									"value": "p",
-									"equals": true,
-									"description": ""
+									"equals": true
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				}
@@ -185,94 +264,184 @@
 		},
 		{
 			"name": "Shipments",
-			"description": "",
 			"item": [
 				{
 					"name": "Create Shipment",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/shipments",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"uuidSender\" : \"19b35539-c86c-4169-83aa-ed58b1d94ac1\",\r\n  \"uuidReceiver\" : \"738edb6f-77c7-4652-a138-548cd3b972f1\",\r\n  \"customerTypeEnum\" : \"RECEIVER\",\r\n  \"shipmentCargo\" : {\r\n    \"numberPackages\" : \"5\",\r\n    \"totalWeight\" : \"40\",\r\n    \"totalCapacity\" : \"32.5\",\r\n    \"cargoDescription\" : \"This cargo includes pens and other writing articles\",\r\n    \"dangerousGoods\" : false\r\n  },\r\n  \"shipmentServices\" : {\r\n    \"preCarriage\" : true,\r\n    \"exportInsurance\" : false,\r\n    \"exportCustomsClearance\" : true,\r\n    \"flight\" : true,\r\n    \"importInsurance\" : true,\r\n    \"importCustomsClearance\" : false,\r\n    \"onCarriage\" : true\r\n  },\r\n  \"shipmentFlight\" : {\r\n    \"flightNumber\" : \"10243\",\r\n    \"airline\" : \"LH\",\r\n    \"departureAirport\" : \"FRA\",\r\n    \"destinationAirport\" : \"STR\",\r\n    \"departureTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"destinationTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"price\" : 100.12\r\n  }\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/shipments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"shipments"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Update Shipment",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/shipments/ae8e57d1-12ce-4993-ad7a-ce0867af9e0a",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"uuidSender\" : \"19b35539-c86c-4169-83aa-ed58b1d94ac1\",\r\n  \"uuidReceiver\" : \"738edb6f-77c7-4652-a138-548cd3b972f1\",\r\n  \"customerTypeEnum\" : \"RECEIVER\",\r\n  \"shipmentCargo\" : {\r\n    \"numberPackages\" : \"100\",\r\n    \"totalWeight\" : \"200.0\",\r\n    \"totalCapacity\" : \"300.0\",\r\n    \"cargoDescription\" : \"This cargo includes pens and other writing articles\",\r\n    \"dangerousGoods\" : false\r\n  },\r\n  \"shipmentServices\" : {\r\n    \"preCarriage\" : true,\r\n    \"exportInsurance\" : false,\r\n    \"exportCustomsClearance\" : true,\r\n    \"flight\" : true,\r\n    \"importInsurance\" : true,\r\n    \"importCustomsClearance\" : false,\r\n    \"onCarriage\" : true\r\n  },\r\n  \"shipmentFlight\" : {\r\n    \"flightNumber\" : \"999999\",\r\n    \"airline\" : \"LH\",\r\n    \"departureAirport\" : \"UPD\",\r\n    \"destinationAirport\" : \"UPD\",\r\n    \"departureTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"destinationTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"price\" : 100.00\r\n  }\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/shipments/ae8e57d1-12ce-4993-ad7a-ce0867af9e0a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"shipments",
+								"ae8e57d1-12ce-4993-ad7a-ce0867af9e0a"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get a single Shipment",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/shipments/901bf3d4-0a80-4eeb-84e5-95665702b8d5",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/shipments/901bf3d4-0a80-4eeb-84e5-95665702b8d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"shipments",
+								"901bf3d4-0a80-4eeb-84e5-95665702b8d5"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "List All Shipments",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/shipments",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/shipments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"shipments"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Add Flight to Shipment",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/shipments/flight/b5e68857-8019-4317-bbb9-5ea3d1e17a8a",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n  \"shipmentFlight\" : {\r\n    \"airline\" : \"LH\",\r\n    \"flightNumber\" : \"1023243\",\r\n    \"departureAirport\" : \"FRAA\",\r\n    \"destinationAirport\" : \"STRR\",\r\n    \"departureTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"destinationTime\" : \"2015-06-02T21:34:33.616Z\",\r\n    \"price\" : 100.12\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/shipments/flight/b5e68857-8019-4317-bbb9-5ea3d1e17a8a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"shipments",
+								"flight",
+								"b5e68857-8019-4317-bbb9-5ea3d1e17a8a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n  \r\n  \"invoiceCreationDate\":\"1995-10-23T10:12:35Z\",\r\n  \"preCarriage\":131.2,\r\n  \"exportInsurance\":1231.1,\r\n  \"exportCustomsClearance\":1231.1,\r\n  \"flightPrice\":100.0,\r\n  \"importInsurance\":1231.1,\r\n  \"importCustomsClearance\":11.1,\r\n  \"onCarriage\":100.0,\r\n  \"managementFee\":131.0,\r\n  \"serviceFee\":100.0,\r\n  \"discount\":12.1\r\n  \r\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/shipments/invoice/1a03e950-bdb7-46cd-9fa3-edb154de54f3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"shipments",
+								"invoice",
+								"1a03e950-bdb7-46cd-9fa3-edb154de54f3"
+							]
 						},
 						"description": ""
 					},
@@ -282,32 +451,62 @@
 		},
 		{
 			"name": "Tasks",
-			"description": "",
 			"item": [
 				{
 					"name": "List All Tasks",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/tasks/active",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/tasks/active",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"tasks",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "List All Completed Tasks For Shipment",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/tasks/completed/54d18d39-8490-45f1-bb8d-603baf089b2e",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/tasks/completed/54d18d39-8490-45f1-bb8d-603baf089b2e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"tasks",
+								"completed",
+								"54d18d39-8490-45f1-bb8d-603baf089b2e"
+							]
+						},
 						"description": "The request lists all completed tasks for a Shipment."
 					},
 					"response": []
@@ -315,22 +514,54 @@
 				{
 					"name": "List All Active Tasks For Shipment",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/tasks/active/54d18d39-8490-45f1-bb8d-603baf089b2e",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/tasks/active/54d18d39-8490-45f1-bb8d-603baf089b2e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"tasks",
+								"active",
+								"54d18d39-8490-45f1-bb8d-603baf089b2e"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "List All Enabled Tasks For Shipment",
 					"request": {
-						"url": "http://localhost:8081/educama/v1/tasks/enabled/54d18d39-8490-45f1-bb8d-603baf089b2e",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8081/educama/v1/tasks/enabled/54d18d39-8490-45f1-bb8d-603baf089b2e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"educama",
+								"v1",
+								"tasks",
+								"enabled",
+								"54d18d39-8490-45f1-bb8d-603baf089b2e"
+							]
+						}
 					},
 					"response": []
 				}

@@ -283,3 +283,23 @@ include::{snippets}/suggestCustomersTest/http-response.adoc[]
 
 ==== Response structure
 include::{snippets}/suggestCustomersTest/response-fields.adoc[]
+
+== Invoice
+
+This resource provides the entry point for invoice.
+
+=== Create a Invoice
+
+A `POST` request is used to create a imvoice.
+
+==== Example Request
+include::{snippets}/createInvoiceTest/http-request.adoc[]
+
+==== Request structure
+include::{snippets}/createInvoiceTest/request-fields.adoc[]
+
+==== Example Response
+include::{snippets}/createInvoiceTest/http-response.adoc[]
+
+==== Response structure
+include::{snippets}/createInvoiceTest/response-fields.adoc[]
