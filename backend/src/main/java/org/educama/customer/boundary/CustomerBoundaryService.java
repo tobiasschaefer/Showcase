@@ -1,6 +1,6 @@
 package org.educama.customer.boundary;
 
-import org.educama.customer.api.datastructure.AddressDS;
+import org.educama.customer.model.Address;
 import org.educama.customer.model.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,10 +15,10 @@ public interface CustomerBoundaryService {
      * Creates a customer.
      *
      * @param name  The name of the customer to be create
-     * @param address  The address {@AddressDS} of the customer to be created
+     * @param address  The address of the customer to be created
      * @return the created customer
      */
-    Customer createCustomer(String name, AddressDS address);
+    Customer createCustomer(String name, Address address);
 
     /**
      * Updates the specified customer, if any changes are present, otherwise a
@@ -26,10 +26,10 @@ public interface CustomerBoundaryService {
      *
      * @param uuid  The uuid of the customer to be updated
      * @param name  The name of the customer to be updated
-     * @param address  The address {@AddressDS} of the customer to be updated
+     * @param address  The address of the customer to be updated
      * @return The updated version of the customer entity
      */
-    Customer updateCustomer(UUID uuid, String name, AddressDS address);
+    Customer updateCustomer(UUID uuid, String name, Address address);
 
     /**
      * Deletes the specified customer (by uuid).

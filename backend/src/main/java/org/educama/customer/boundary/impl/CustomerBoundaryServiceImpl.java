@@ -1,8 +1,8 @@
 package org.educama.customer.boundary.impl;
 
 import org.educama.common.exceptions.ResourceNotFoundException;
-import org.educama.customer.api.datastructure.AddressDS;
 import org.educama.customer.boundary.CustomerBoundaryService;
+import org.educama.customer.model.Address;
 import org.educama.customer.model.Customer;
 import org.educama.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,59 +20,54 @@ import static org.springframework.util.Assert.notNull;
  */
 @Service
 public class CustomerBoundaryServiceImpl implements CustomerBoundaryService {
+    public static final Pageable DEFAULT_PAGEABLE = new PageRequest(0, 10);
 
-    private static final Pageable DEFAULT_PAGEABLE = new PageRequest(0, 10);
+    private final CustomerRepository customerRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
+    public CustomerBoundaryServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Override
-    public Customer createCustomer(String name, AddressDS address) {
-        notNull(name);
-        notNull(address);
+    public Customer createCustomer(String name, Address address) {
+        notNull(name, "No name given for new customer to create");
+        notNull(address, "No address given for new customer to create");
 
-        Customer newCustomer = new Customer(name, address.toAddress());
+        Customer newCustomer = new Customer(name, address);
 
         return customerRepository.save(newCustomer);
     }
 
     @Override
-    public Customer updateCustomer(UUID uuid, String name, AddressDS address) {
-        notNull(uuid);
-        notNull(name);
-        notNull(address);
+    public Customer updateCustomer(UUID uuid, String name, Address address) {
+        notNull(name, "No name given for customer to update");
+        notNull(address, "No address given for customer to update");
 
-        Customer customer = customerRepository.findByUuid(uuid);
+        Customer customer = findCustomerByUuid(uuid);
 
-        if (customer == null) {
-            throw new ResourceNotFoundException("Customer not found");
-        } else {
-            customer.name = name;
-            customer.address = address.toAddress();
-            return customerRepository.save(customer);
-        }
+        customer.name = name;
+        customer.address = address;
+        return customerRepository.save(customer);
     }
 
     @Override
     public void deleteCustomer(UUID uuid) {
-        notNull(uuid);
-        Customer customer = customerRepository.findByUuid(uuid);
-        if (customer == null) {
-            throw new ResourceNotFoundException("Customer not found");
-        } else {
-            customerRepository.delete(customer.getId());
-        }
+        Customer customer = findCustomerByUuid(uuid);
+        customerRepository.delete(customer.getId());
     }
 
     @Override
     public Customer findCustomerByUuid(UUID uuid) {
-        notNull(uuid);
+        notNull(uuid, "No UUID given for customer to look up");
+
         Customer customer = customerRepository.findByUuid(uuid);
+
         if (customer == null) {
             throw new ResourceNotFoundException("Customer not found");
-        } else {
-            return customer;
         }
+
+        return customer;
     }
 
     @Override
@@ -80,15 +75,16 @@ public class CustomerBoundaryServiceImpl implements CustomerBoundaryService {
         if (pageable == null) {
             pageable = DEFAULT_PAGEABLE;
         }
+
         return customerRepository.findAll(pageable);
     }
 
     @Override
     public Page<Customer> findSuggestionsForCustomer(String name, Pageable pageable) {
-        notNull(name);
-        notNull(pageable);
-        Page<Customer> page = customerRepository.findByNameStartingWithIgnoreCase(name, pageable);
-        return page;
+        notNull(name, "No name prefix given for customer to look up");
+        notNull(pageable, "No pagination given for customer to look up");
+
+        return customerRepository.findByNameStartingWithIgnoreCase(name, pageable);
     }
 
 }

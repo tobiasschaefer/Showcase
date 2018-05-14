@@ -26,22 +26,25 @@ import java.util.UUID;
 @RequestMapping(value = CustomerController.CUSTOMER_RESOURCE_PATH, produces = {MediaType.APPLICATION_JSON_VALUE})
 @Transactional
 public class CustomerController {
-
     public static final String CUSTOMER_RESOURCE_PATH = "/educama/v1/customers";
 
-    @Autowired
-    private CustomerResourceAssembler customerResourceAssembler;
+    private final CustomerResourceAssembler customerResourceAssembler;
+    private final CustomerListResourceAssembler customerListResourceAssembler;
+    private final CustomerBoundaryService customerService;
 
     @Autowired
-    private CustomerListResourceAssembler customerListResourceAssembler;
-
-    @Autowired
-    private CustomerBoundaryService customerService;
+    public CustomerController(CustomerResourceAssembler customerResourceAssembler,
+                              CustomerListResourceAssembler customerListResourceAssembler,
+                              CustomerBoundaryService customerService) {
+        this.customerResourceAssembler = customerResourceAssembler;
+        this.customerListResourceAssembler = customerListResourceAssembler;
+        this.customerService = customerService;
+    }
 
     /**
      * Creates the customer if it does not exist.
      *
-     * @param saveCustomerResource
+     * @param saveCustomerResource Name and address of the customer to create
      * @return The newly created customer
      */
     @RequestMapping(method = RequestMethod.POST)
@@ -49,11 +52,11 @@ public class CustomerController {
             @Valid @RequestBody SaveCustomerResource saveCustomerResource) {
 
         if (saveCustomerResource != null) {
-            Customer newCustomer = customerService.createCustomer(saveCustomerResource.name, saveCustomerResource.address);
+            Customer newCustomer = customerService.createCustomer(saveCustomerResource.name, saveCustomerResource.address.toAddress());
             CustomerResource customerResource = customerResourceAssembler.toResource(newCustomer);
-            return new ResponseEntity<CustomerResource>(customerResource, HttpStatus.CREATED);
+            return new ResponseEntity<>(customerResource, HttpStatus.CREATED);
         }
-        return new ResponseEntity<CustomerResource>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
     }
 
@@ -67,11 +70,11 @@ public class CustomerController {
     public ResponseEntity<CustomerResource> updateCustomer(@PathVariable("uuid") UUID uuid,
                                                            @Valid @RequestBody SaveCustomerResource saveCustomerResource) {
         if (saveCustomerResource != null) {
-            Customer updatedCustomer = customerService.updateCustomer(uuid, saveCustomerResource.name, saveCustomerResource.address);
+            Customer updatedCustomer = customerService.updateCustomer(uuid, saveCustomerResource.name, saveCustomerResource.address.toAddress());
             CustomerResource customerResource = customerResourceAssembler.toResource(updatedCustomer);
-            return new ResponseEntity<CustomerResource>(customerResource, HttpStatus.OK);
+            return new ResponseEntity<>(customerResource, HttpStatus.OK);
         }
-        return new ResponseEntity<CustomerResource>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
     }
 
@@ -95,26 +98,25 @@ public class CustomerController {
     @RequestMapping(method = RequestMethod.GET)
     public CustomerListResource findAll(Pageable pageable) {
         Page<Customer> page = customerService.findAllCustomers(pageable);
-        CustomerListResource customerListResource = customerListResourceAssembler.build(page);
-        return customerListResource;
+        return customerListResourceAssembler.build(page);
     }
 
     /**
      * Retrieves a single customer.
      *
-     * @id identified (UUID) of the customer
+     * @param uuid  identified (UUID) of the customer
      * @return the found customer
      */
     @RequestMapping(value = "/{uuid}", method = RequestMethod.GET)
     public ResponseEntity<CustomerResource> findOneByUuid(@PathVariable("uuid") UUID uuid) {
         if (uuid != null) {
             Customer customer = customerService.findCustomerByUuid(uuid);
-            if (customer != null) {
-                CustomerResource customerResource = customerResourceAssembler.toResource(customer);
-                return new ResponseEntity<CustomerResource>(customerResource, HttpStatus.OK);
-            }
+
+            CustomerResource customerResource = customerResourceAssembler.toResource(customer);
+
+            return new ResponseEntity<>(customerResource, HttpStatus.OK);
         }
-        return new ResponseEntity<CustomerResource>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     /**
@@ -127,7 +129,6 @@ public class CustomerController {
     @RequestMapping(value = "/suggestions", method = RequestMethod.GET)
     public CustomerListResource findSuggestions(@RequestParam("term") String term, Pageable pageable) {
         Page<Customer> page = customerService.findSuggestionsForCustomer(term, pageable);
-        CustomerListResource customerListResource = customerListResourceAssembler.build(page);
-        return customerListResource;
+        return customerListResourceAssembler.build(page);
     }
 }

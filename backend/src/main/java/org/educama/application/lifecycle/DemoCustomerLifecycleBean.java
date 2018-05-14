@@ -1,7 +1,7 @@
 package org.educama.application.lifecycle;
 
-import org.educama.customer.api.datastructure.AddressDS;
 import org.educama.customer.boundary.CustomerBoundaryService;
+import org.educama.customer.model.Address;
 import org.educama.customer.model.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,12 +18,15 @@ import java.lang.invoke.MethodHandles;
  */
 @Component
 public class DemoCustomerLifecycleBean implements SmartLifecycle {
-
-    @Autowired
-    CustomerBoundaryService customerBoundaryService;
+    private final CustomerBoundaryService customerBoundaryService;
 
     private final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
     private boolean running;
+
+    @Autowired
+    public DemoCustomerLifecycleBean(CustomerBoundaryService customerBoundaryService) {
+        this.customerBoundaryService = customerBoundaryService;
+    }
 
     @Override
     public boolean isAutoStartup() {
@@ -65,22 +68,22 @@ public class DemoCustomerLifecycleBean implements SmartLifecycle {
 
             customerBoundaryService.createCustomer(
                     "Apple",
-                    new AddressDS("Apple Street", "1", "12345", "Silicon Valley"));
+                    new Address("Apple Street", "1", "12345", "Silicon Valley"));
             customerBoundaryService.createCustomer(
                     "Bayer AG",
-                    new AddressDS("Kaiser-Wilhelm-Allee", "1", "51373", "Leverkusen"));
+                    new Address("Kaiser-Wilhelm-Allee", "1", "51373", "Leverkusen"));
             customerBoundaryService.createCustomer(
                     "Tesa Hamburg",
-                    new AddressDS("Heykenaukamp", "10", "21147", "Hamburg"));
+                    new Address("Heykenaukamp", "10", "21147", "Hamburg"));
             customerBoundaryService.createCustomer(
                     "NovaTec Consulting GmbH",
-                    new AddressDS("Dieselstrasse", "18/1", "70771", "Leinfelden-Echterdingen"));
+                    new Address("Dieselstrasse", "18/1", "70771", "Leinfelden-Echterdingen"));
             customerBoundaryService.createCustomer(
                     "Daimler AG (Standort Möhringen)",
-                    new AddressDS("Epplestraße", "225", "70567", "Stuttgart"));
+                    new Address("Epplestraße", "225", "70567", "Stuttgart"));
             customerBoundaryService.createCustomer(
                     "Continental AG",
-                    new AddressDS("Vahrenwalder Str.", "9", "30165", "Hannover"));
+                    new Address("Vahrenwalder Str.", "9", "30165", "Hannover"));
         }
     }
 }

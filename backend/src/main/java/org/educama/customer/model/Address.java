@@ -9,18 +9,17 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class Address {
+    @NotEmpty
+    private String street;
 
     @NotEmpty
-    public String street;
+    private String streetNo;
 
     @NotEmpty
-    public String streetNo;
+    private String zipCode;
 
     @NotEmpty
-    public String zipCode;
-
-    @NotEmpty
-    public String city;
+    private String city;
 
     /**
      * Constructor for JPA.
@@ -36,4 +35,19 @@ public class Address {
         this.city = city;
     }
 
+    public String street() {
+        return street;
+    }
+
+    public String streetNo() {
+        return streetNo;
+    }
+
+    public String zipCode() {
+        return zipCode;
+    }
+
+    public String city() {
+        return city;
+    }
 }

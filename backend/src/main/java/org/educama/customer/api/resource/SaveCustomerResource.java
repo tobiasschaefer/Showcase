@@ -17,4 +17,12 @@ public class SaveCustomerResource extends ResourceSupport {
     @NotNull
     public AddressDS address;
 
+    private SaveCustomerResource() {
+    }
+
+    public SaveCustomerResource(String name, AddressDS address) {
+        this.name = name;
+        this.address = address;
+    }
+
 }
