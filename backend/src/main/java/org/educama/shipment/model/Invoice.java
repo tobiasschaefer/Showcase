@@ -1,5 +1,6 @@
 package org.educama.shipment.model;
 
+import org.educama.common.persistence.InstantConverter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;

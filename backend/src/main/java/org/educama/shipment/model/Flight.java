@@ -1,5 +1,7 @@
 package org.educama.shipment.model;
 
+import org.educama.common.persistence.InstantConverter;
+
 import javax.persistence.Convert;
 import javax.persistence.Embeddable;
 import java.time.Instant;

@@ -1,4 +1,4 @@
-package org.educama.shipment.model;
+package org.educama.common.persistence;
 
 import javax.persistence.AttributeConverter;
 import java.sql.Timestamp;
