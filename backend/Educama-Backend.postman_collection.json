@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "32cd2bb4-2baf-4718-8196-51903b9437e0",
+		"_postman_id": "c5e31c63-42ef-4856-8668-4ce0668bc405",
 		"name": "Educama-Backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -451,7 +451,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8081/educama/v1/shipments/invoice/2db20a7d-063a-4592-b2b0-14b4ba8a5d48",
 							"protocol": "http",
