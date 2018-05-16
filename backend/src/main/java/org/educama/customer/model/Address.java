@@ -35,19 +35,19 @@ public class Address {
         this.city = city;
     }
 
-    public String street() {
+    public String getStreet() {
         return street;
     }
 
-    public String streetNo() {
+    public String getStreetNo() {
         return streetNo;
     }
 
-    public String zipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public String city() {
+    public String getCity() {
         return city;
     }
 }

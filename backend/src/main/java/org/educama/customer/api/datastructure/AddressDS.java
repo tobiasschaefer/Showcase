@@ -28,10 +28,10 @@ public class AddressDS {
     }
 
     public AddressDS(Address address) {
-        this.street = address.street();
-        this.streetNo = address.streetNo();
-        this.zipCode = address.zipCode();
-        this.city = address.city();
+        this.street = address.getStreet();
+        this.streetNo = address.getStreetNo();
+        this.zipCode = address.getZipCode();
+        this.city = address.getCity();
     }
 
     public AddressDS(String street, String streetNo, String zipCode, String city) {

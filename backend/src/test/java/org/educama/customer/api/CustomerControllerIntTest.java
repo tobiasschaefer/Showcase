@@ -35,10 +35,10 @@ import static org.mockito.Mockito.when;
  */
 @SpringBootTest(classes = {CustomerController.class, CustomerResourceAssembler.class,
         CustomerListResourceAssembler.class, CustomerBoundaryServiceImpl.class})
-public class CustomerControllerIT {
+public class CustomerControllerIntTest {
     @ClassRule
     public static final SpringClassRule SPRING_CLASS_RULE = new SpringClassRule();
-    public static final int ENTRIES_PER_PAGE = 10;
+    private static final int ENTRIES_PER_PAGE = 10;
 
     @Rule
     public final SpringMethodRule springMethodRule = new SpringMethodRule();
